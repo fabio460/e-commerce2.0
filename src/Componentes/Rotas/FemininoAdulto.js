@@ -5,12 +5,12 @@ import Cards from '../ListaProdutos/Cards'
 import Paginacao from '../ListaProdutos/Paginação'
 import Navegacao from './Navegacao'
 
-export default function Feminino() {
+export default function FemininoAdulto() {
 
   var lista = JSON.parse(localStorage.getItem('lista'))
   let aux = []
   lista.filter(elem=>{
-    if(elem.sexo === 'feminino'){
+    if(elem.sexo === 'feminino' && elem.idade === 'adulto'){
       aux.push(elem)
     }
     return elem 
@@ -24,7 +24,7 @@ export default function Feminino() {
   return (
     <div>
     <AppBarBootstrap/>
-    <Navegacao sexo={'Feminino'} />
+    <Navegacao sexo={'Feminino'} idade={'Adulto'}/>
     <div className='containerRotas'>
       <div className='sidebarRotas'>sidebar</div>
       <div className='listaRotas'>

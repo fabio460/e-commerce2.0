@@ -15,6 +15,8 @@ import InfantilMasculino from './Componentes/Rotas/InfantilMasculino';
 import PlusSiseFeminino from './Componentes/Rotas/PlusSiseFeminino';
 import Sapatos from './Componentes/Rotas/Sapatos';
 import Tenis from './Componentes/Rotas/Tenis';
+import MasculinoAdulto from './Componentes/Rotas/MasculinoAdulto';
+import FemininoAdulto from './Componentes/Rotas/FemininoAdulto';
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="masculino" element={<Masculino />} />
+          <Route path="masculinoAdulto" element={<MasculinoAdulto />} />
           <Route path="feminino" element={<Feminino />} />
+          <Route path="femininoAdulto" element={<FemininoAdulto />} />
           <Route path="plusSise" element={<PlusSise/>} />
           <Route path="infantil" element={<Infantil />} />
           
