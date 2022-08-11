@@ -11,7 +11,7 @@ function handleClick(event) {
   console.info('You clicked a breadcrumb.');
 }
 
-export default function Navegacao({sexo,idade}) {
+export default function Navegacao({sexo,idade,tipo}) {
   const navigate = useNavigate()  
   return (
     <div role="presentation" onClick={handleClick}>
@@ -42,6 +42,13 @@ export default function Navegacao({sexo,idade}) {
         >
           
           {idade}
+        </Typography>
+        <Typography
+          sx={{ display: 'flex', alignItems: 'center' }}
+          color="text.primary"
+        >
+          
+          {tipo}
         </Typography>
       </Breadcrumbs>
     </div>
