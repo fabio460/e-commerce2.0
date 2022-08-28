@@ -18,9 +18,12 @@ export default function Paginacao() {
         }
     })
   };
-  
-  console.log(localStorage.getItem('tamanhoDaLista'))
+  const posicao = useSelector(state=>state.IndicePaginacaoReducer)
+  //console.log(localStorage.getItem('tamanhoDaLista'))
+  //console.log(posicao.lista)
   var tamanhoDaLista = parseInt(localStorage.getItem('tamanhoDaLista'))
+  //let tamanhoDaLista = posicao.lista
+  
   return (
     <Stack spacing={1}>
       <Pagination count={ Math.round(tamanhoDaLista/10 )} page={pagina} onChange={handleChange} color='secondary'/>

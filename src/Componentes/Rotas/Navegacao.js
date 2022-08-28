@@ -14,7 +14,7 @@ function handleClick(event) {
 export default function Navegacao({sexo,idade,tipo}) {
   const navigate = useNavigate()  
   return (
-    <div role="presentation" onClick={handleClick}>
+    <div role="presentation" onClick={handleClick} style={{padding:"1% 3%"}}>
       <Breadcrumbs aria-label="breadcrumb">
         <Link
           underline="hover"
@@ -36,20 +36,24 @@ export default function Navegacao({sexo,idade,tipo}) {
           
           {sexo}
         </Link>
-        <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="text.primary"
-        >
-          
-          {idade}
-        </Typography>
-        <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="text.primary"
-        >
-          
-          {tipo}
-        </Typography>
+        {idade && 
+            <Typography
+                sx={{ display: 'flex', alignItems: 'center' }}
+                color="text.primary"
+              >
+                
+                {idade}
+              </Typography>
+        }
+        {tipo && 
+            <Typography
+            sx={{ display: 'flex', alignItems: 'center' }}
+            color="text.primary"
+          >
+            
+            {tipo}
+          </Typography>
+        }
       </Breadcrumbs>
     </div>
   );

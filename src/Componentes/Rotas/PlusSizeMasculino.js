@@ -1,20 +1,20 @@
+
 import React from 'react'
 import { useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
 import Cards from '../ListaProdutos/Cards'
 import Paginacao from '../ListaProdutos/Paginação'
-import SideBarRotas from '../SideBar/SideBarRotas'
 import Navegacao from './Navegacao'
 
-export default function Feminino() {
+export default function PlusSiseMasculino() {
 
   var lista = JSON.parse(localStorage.getItem('lista'))
   let aux = []
   lista.filter(elem=>{
-    if(elem.sexo === 'feminino'){
+    if(elem.sexo === 'masculino plus size' ){
       aux.push(elem)
     }
-    return elem 
+    return elem
   })
   lista = aux
   localStorage.setItem('tamanhoDaLista',lista.length)
@@ -25,9 +25,9 @@ export default function Feminino() {
   return (
     <div>
     <AppBarBootstrap/>
-    <Navegacao sexo={'Feminino'} />
+    <Navegacao sexo={' '} idade={'masculino plus size'}/>
     <div className='containerRotas'>
-      <div className='sidebarRotas'><SideBarRotas/></div>
+      <div className='sidebarRotas'>sidebar</div>
       <div className='listaRotas'>
           <div className='listaProdutos'>
               {lista.map((item,key)=>{

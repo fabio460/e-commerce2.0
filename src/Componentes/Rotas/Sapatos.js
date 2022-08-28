@@ -22,7 +22,7 @@ export default function Sapatos() {
   return (
      <div>
         <AppBarBootstrap/>
-        <Navegacao sexo={'Feminino'} idade={'Adulto'} tipo={'Sapato'}/>
+        <Navegacao sexo={'Feminino'}  tipo={'Sapato'}/>
         <div className='containerRotas'>
           <div className='sidebarRotas'>sidebar</div>
           <div className='listaRotas'>

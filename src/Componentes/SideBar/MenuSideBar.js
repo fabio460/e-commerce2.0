@@ -16,7 +16,7 @@ export default function MenuSideBar() {
   return (
     <Paper sx={{ width: '100%', maxWidth: '100%' }}>
       <MenuList>
-        <MenuItem onClick={()=> navigate('/masculino')}>
+        <MenuItem onClick={()=> navigate('/masculinoAdulto')}>
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
@@ -25,7 +25,7 @@ export default function MenuSideBar() {
             ⌘X
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/feminino')}>
+        <MenuItem onClick={()=> navigate('/femininoAdulto')}>
           <ListItemIcon>
             <ContentCopy fontSize="small" />
           </ListItemIcon>

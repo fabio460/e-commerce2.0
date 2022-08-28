@@ -26,7 +26,7 @@ export default function PlusSiseFeminino() {
   return (
     <div>
     <AppBarBootstrap/>
-    <Navegacao sexo={'masculino plus size'} idade={'Adulto'}/>
+    <Navegacao  idade={'feminino plus size'}/>
     <div className='containerRotas'>
       <div className='sidebarRotas'>sidebar</div>
       <div className='listaRotas'>

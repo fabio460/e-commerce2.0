@@ -8,14 +8,14 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Slide from '@mui/material/Slide';
-import { useDispatch } from 'react-redux/es/exports';
+
 import ListaProdutos from '../ListaProdutos/ListaProdutos';
 import Paginacao from '../ListaProdutos/Paginação';
 import './Home.css'
 import SideBar from '../SideBar/SideBar';
 import Caroulsel from './Caroulsel';
 import AppBarBootstrap from '../AppBar/AppBarBootstrap';
-import { Divider } from '@mui/material';
+
 function HideOnScroll(props) {
   const { children, window } = props;
   // Note that you normally won't need to set the window ref as useScrollTrigger

@@ -22,7 +22,7 @@ export default function Masculino() {
   return (
      <div>
         <AppBarBootstrap/>
-        <Navegacao sexo={'Masculino'} />
+        <Navegacao sexo={'Masculino'} idade={'Adulto'}/>
         <div className='containerRotas'>
           <div className='sidebarRotas'>sidebar</div>
           <div className='listaRotas'>

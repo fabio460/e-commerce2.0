@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
 import Cards from '../ListaProdutos/Cards'
 import Paginacao from '../ListaProdutos/Paginação'
+import SideBarRotas from '../SideBar/SideBarRotas'
 import Navegacao from './Navegacao'
 import './Rotas.css'
 export default function InfantilFeminino() {
@@ -24,7 +25,7 @@ export default function InfantilFeminino() {
         <AppBarBootstrap/>
         <Navegacao sexo={'Feminino'} idade={'infantil'}/>
         <div className='containerRotas'>
-          <div className='sidebarRotas'>sidebar</div>
+          <div className='sidebarRotas'><SideBarRotas/></div>
           <div className='listaRotas'>
               <div className='listaProdutos'>
                   {lista.map((item,key)=>{
