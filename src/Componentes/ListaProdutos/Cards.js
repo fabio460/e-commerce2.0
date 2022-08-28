@@ -34,7 +34,7 @@ export default function Cards({item}) {
             {item.valor}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item.tipo}
+            {item.nome}
           </Typography>
           
         </CardContent>
