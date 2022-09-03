@@ -7,6 +7,9 @@
 .sidebarRotas{
     margin-right: 20px;
 }
+.sidebarMibile{
+   display: none;
+}
 @media (max-width:500px) {
     .containerRotas {
         grid-template-columns: 1fr;
@@ -15,6 +18,14 @@
         display: none;
     }
     .sidebarRotas{
+        display: none;
+    }
+    .sidebarMibile{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 3px;
+    }
+    .navegacaoHomeLink{
         display: none;
     }
   }

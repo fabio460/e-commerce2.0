@@ -113,7 +113,19 @@ export default function Feminino() {
   return (
      <div>
         <AppBarBootstrap/>
-        <Navegacao sexo={'Feminino'} idade={'Adulto'}/>
+          <Navegacao 
+            setTipo={setTipo}
+            calcas={'calça'}
+            shorts={'shorts'}
+            blusas={'blusa'}
+            sapatos={'sapato'}
+            vestidos={'vestidos'}
+            saia={'saia'}
+            sexo={'feminino'}
+            idade={'adulto'}
+            tudo={'tudo'}
+            jeans={'jeans'}
+          />
         <div className='containerRotas '>
           <div className='sidebarRotas'>
             <SideBarRotas 
