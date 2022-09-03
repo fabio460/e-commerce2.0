@@ -107,7 +107,7 @@ export default function MasculinoAdulto() {
         <AppBarBootstrap/>
         <Navegacao 
             setTipo={setTipo}
-            calcas={'Calças'}
+            calcas={'calça'}
             tudo={'tudo'}
             camisas={'camisas'}
             tenis={'tenis'}

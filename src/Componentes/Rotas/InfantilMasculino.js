@@ -94,7 +94,17 @@ export default function InfantilMasculino() {
   return (
      <div>
         <AppBarBootstrap/>
-        <Navegacao sexo={'Masculino'} idade={'infantil'}/>
+        <Navegacao 
+                        setTipo={setTipo}
+                        calcas={'Calças'}
+                        tudo={'tudo'}
+                        camisas={'camisas'}
+                        tenis={'tênis'}
+                        sexo={'masculino'}
+                        idade={'adulto'}
+                        bermudas={'bermudas'}
+
+        />
         <div className='containerRotas'>
           <div className='sidebarRotas'>
           <SideBarRotas 

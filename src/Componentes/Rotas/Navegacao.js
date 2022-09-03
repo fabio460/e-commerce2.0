@@ -79,6 +79,11 @@ export default function Navegacao({
                            idade={idade}
                            tudo={tudo}
                            jeans={jeans}
+                           bermudas={bermudas}
+                           camisas={camisas}
+                           tenis={tenis}
+                           cropped={cropped}
+                           vestido={vestido}
             />
           </Typography>
         </div>
