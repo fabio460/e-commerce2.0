@@ -15,12 +15,10 @@ import './Home.css'
 import SideBar from '../SideBar/SideBar';
 import Caroulsel from './Caroulsel';
 import AppBarBootstrap from '../AppBar/AppBarBootstrap';
+import BtnFlutuante from './btnFlutuante';
 
 function HideOnScroll(props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
@@ -34,10 +32,6 @@ function HideOnScroll(props) {
 
 HideOnScroll.propTypes = {
   children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
@@ -52,35 +46,25 @@ export default function Home(props) {
     }
   }
 
-  
-
-
-
   return (
     <React.Fragment>
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar sx={{background:'inherit'}}>
-              {/* <AppBarContainer/> */}
-              {/* <div style={{color:'black'}}>appbar</div> */}
-              <AppBarBootstrap/>
+            <AppBarBootstrap/>
         </AppBar>
-       
       </HideOnScroll>
       <Toolbar />
       <Container >
-        
         <Caroulsel/>
         <Box sx={ContainerStyle}>
-          <div><SideBar/></div>
-          
+          <div className='sidebar'><SideBar/></div>
           <div className='listaDeProdutos'>
-          
             <ListaProdutos />
             <div className='paginacao'><Paginacao/></div>
+            <BtnFlutuante/>
           </div>      
         </Box> 
-        
       </Container>
     </React.Fragment>
   );

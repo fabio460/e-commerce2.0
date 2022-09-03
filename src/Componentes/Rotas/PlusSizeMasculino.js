@@ -2,20 +2,112 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
+import BtnFlutuante from '../Home/btnFlutuante'
 import Cards from '../ListaProdutos/Cards'
 import Paginacao from '../ListaProdutos/Paginação'
+import SideBarRotas from '../SideBar/SideBarRotas'
 import Navegacao from './Navegacao'
 
 export default function PlusSiseMasculino() {
 
   var lista = JSON.parse(localStorage.getItem('lista'))
   let aux = []
-  lista.filter(elem=>{
-    if(elem.sexo === 'masculino plus size' ){
-      aux.push(elem)
-    }
-    return elem
-  })
+
+
+  const [tipo,setTipo]=React.useState('');
+  switch (tipo) {
+
+    case 'saia':
+      lista.filter(elem=>{
+        if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'saia'){
+          aux.push(elem)
+        }
+        return elem
+      })
+      
+      break;
+
+      case 'shorts':
+        lista.filter(elem=>{
+          if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'shorts'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
+
+      case 'blusa':
+        lista.filter(elem=>{
+          if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'blusa'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
+
+      case 'calça':
+        lista.filter(elem=>{
+          if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'calça'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
+
+      case 'camiseta':
+        lista.filter(elem=>{
+          if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'camiseta'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
+
+      case 'vestidos':
+        lista.filter(elem=>{
+          if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'vestido'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
+
+      case 'cropped':
+        lista.filter(elem=>{
+          if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'cropped'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
+
+      case 'jeans':
+        lista.filter(elem=>{
+          if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto' && elem.tipo === 'jeans'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
+  
+    default:
+      lista.filter(elem=>{
+        if(elem.sexo === 'masculino plus size' && elem.idade === 'adulto'){
+          aux.push(elem)
+        }
+        return elem
+      })
+      break;
+  }
+
+
   lista = aux
   localStorage.setItem('tamanhoDaLista',lista.length)
   const posicao = useSelector(state=>state.IndicePaginacaoReducer)
@@ -27,7 +119,23 @@ export default function PlusSiseMasculino() {
     <AppBarBootstrap/>
     <Navegacao sexo={' '} idade={'masculino plus size'}/>
     <div className='containerRotas'>
-      <div className='sidebarRotas'>sidebar</div>
+      <div className='sidebarRotas'>
+      <SideBarRotas 
+              setTipo={setTipo}
+              calcas={'Calças'}
+              
+              blusas={'Blusas'}
+              cropped={'cropped'}
+              vestidos={'Vestidos'}
+             
+              sexo={'feminino'}
+              idade={'adulto'}
+              tudo={'tudo'}
+              
+              // bermudas={'bermudas'}
+             />
+      </div>
+      </div>
       <div className='listaRotas'>
           <div className='listaProdutos'>
               {lista.map((item,key)=>{
@@ -35,6 +143,7 @@ export default function PlusSiseMasculino() {
               })}
           </div>
           <div className='paginacao'><Paginacao/></div>
+          <BtnFlutuante/>
         </div>
     </div>
  </div>

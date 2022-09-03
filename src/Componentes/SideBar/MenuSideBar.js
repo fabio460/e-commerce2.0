@@ -22,7 +22,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Masculino</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘X
+           
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/femininoAdulto')}>
@@ -31,7 +31,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Feminino</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘C
+            
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/PlusSise')}>
@@ -40,7 +40,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Plus Size Masculino</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘V
+          
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/PlusSiseFeminino')}>
@@ -49,7 +49,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Plus Size Feminino</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘V
+            
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/InfantilMasculino')}>
@@ -58,7 +58,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Infantil Masculino</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘V
+          
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/InfantilFeminino')}>
@@ -67,7 +67,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Infantil Feminino</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘V
+           
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/infantil')}>
@@ -76,7 +76,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Infantil </ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘X
+            
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/sapato')}>
@@ -85,7 +85,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Sapatos</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘C
+            
           </Typography>
         </MenuItem>
         <MenuItem onClick={()=> navigate('/tenis')}>
@@ -94,7 +94,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Tenis</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘V
+          
           </Typography>
         </MenuItem>
         <MenuItem>
@@ -103,7 +103,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Bolsas</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘X
+            
           </Typography>
         </MenuItem>
         <MenuItem>
@@ -112,7 +112,7 @@ export default function MenuSideBar() {
           </ListItemIcon>
           <ListItemText>Chapels</ListItemText>
           <Typography variant="body2" color="text.secondary">
-            ⌘C
+            
           </Typography>
         </MenuItem>
      

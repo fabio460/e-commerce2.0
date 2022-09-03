@@ -10,8 +10,21 @@ import ContentCut from '@mui/icons-material/ContentCut';
 import ContentCopy from '@mui/icons-material/ContentCopy';
 import ContentPaste from '@mui/icons-material/ContentPaste';
 import Cloud from '@mui/icons-material/Cloud';
+import { useDispatch } from 'react-redux';
 
-export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo,idade,bermudas,tenis,setTipo,saia,tudo}) {
+export default function SideBarRotas({calcas,shorts,cropped,blusas,sapatos,vestidos,vestido,sexo,idade,bermudas,tenis,setTipo,saia,tudo,camisas,jeans}) {
+  const dispath = useDispatch()
+  const alterarTipo = (tipo)=>{
+    setTipo(tipo)
+    dispath({
+      type:'indice',
+      payload:{
+        
+        inicio:0,
+        fim:8
+      }
+    }) 
+  }
   return (
     <Paper sx={{ width: 320, maxWidth: '100%' }}>
 
@@ -31,7 +44,7 @@ export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={()=> setTipo('calça')}>{calcas}</ListItemText>
+          <ListItemText onClick={()=>alterarTipo('calça')}>{calcas}</ListItemText>
         </MenuItem>
         </div> }
 
@@ -40,7 +53,7 @@ export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={()=> setTipo('shorts')}>{shorts}</ListItemText>
+          <ListItemText onClick={()=>alterarTipo('shorts')}>{shorts}</ListItemText>
         </MenuItem>
         </div> }
 
@@ -49,7 +62,7 @@ export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={()=> setTipo('blusa')}>{blusas}</ListItemText>
+          <ListItemText onClick={()=>alterarTipo('blusa')}>{blusas}</ListItemText>
         </MenuItem>
         </div> }
 
@@ -58,7 +71,16 @@ export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={()=> setTipo('vestidos')}>{vestidos}</ListItemText>
+          <ListItemText onClick={ ()=>alterarTipo('vestidos') }>{vestidos}</ListItemText>
+        </MenuItem>
+        </div> }
+
+        {vestido && <div>
+          <MenuItem>
+          <ListItemIcon>
+            <ContentCut fontSize="small" />
+          </ListItemIcon>
+          <ListItemText onClick={ ()=>alterarTipo('vestido') }>{vestido}</ListItemText>
         </MenuItem>
         </div> }
 
@@ -67,7 +89,7 @@ export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={()=> setTipo('saia')}>{saia}</ListItemText>
+          <ListItemText onClick={()=>alterarTipo('saia')}>{saia}</ListItemText>
         </MenuItem>
         </div> }
 
@@ -76,7 +98,16 @@ export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={()=> setTipo('sapato')}>{sapatos}</ListItemText>
+          <ListItemText onClick={()=>alterarTipo('sapato')}>{sapatos}</ListItemText>
+        </MenuItem>
+        </div> }
+
+        {cropped && <div>
+          <MenuItem>
+          <ListItemIcon>
+            <ContentCut fontSize="small" />
+          </ListItemIcon>
+          <ListItemText onClick={()=>alterarTipo('cropped')}>{cropped}</ListItemText>
         </MenuItem>
         </div> }
 
@@ -85,7 +116,34 @@ export default function SideBarRotas({calcas,shorts,blusas,sapatos,vestidos,sexo
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText>{bermudas}</ListItemText>
+          <ListItemText onClick={()=>alterarTipo('bermudas')}>{bermudas}</ListItemText>
+        </MenuItem>
+        </div> }
+
+        {tenis && <div>
+          <MenuItem>
+          <ListItemIcon>
+            <ContentCut fontSize="small" />
+          </ListItemIcon>
+          <ListItemText onClick={()=>alterarTipo('tenis')}>{tenis}</ListItemText>
+        </MenuItem>
+        </div> }
+
+        {camisas && <div>
+          <MenuItem>
+          <ListItemIcon>
+            <ContentCut fontSize="small" />
+          </ListItemIcon>
+          <ListItemText onClick={()=>alterarTipo('camisas')}>{camisas}</ListItemText>
+        </MenuItem>
+        </div> }
+
+        {jeans && <div>
+          <MenuItem>
+          <ListItemIcon>
+            <ContentCut fontSize="small" />
+          </ListItemIcon>
+          <ListItemText onClick={()=>alterarTipo('jeans')}>{jeans}</ListItemText>
         </MenuItem>
         </div> }
     

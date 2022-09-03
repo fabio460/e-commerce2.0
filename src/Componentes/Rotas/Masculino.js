@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
+import BtnFlutuante from '../Home/btnFlutuante'
 import Cards from '../ListaProdutos/Cards'
 import Paginacao from '../ListaProdutos/Paginação'
 import Navegacao from './Navegacao'
@@ -32,6 +33,7 @@ export default function Masculino() {
                   })}
               </div>
               <div className='paginacao'><Paginacao/></div>
+              <BtnFlutuante/>
             </div>
         </div>
      </div>

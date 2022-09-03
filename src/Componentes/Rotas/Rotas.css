@@ -2,10 +2,19 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
     margin-top: 20px;
-    padding:0 3%;
+    padding:0 12%;
+}
+.sidebarRotas{
+    margin-right: 20px;
 }
 @media (max-width:500px) {
     .containerRotas {
         grid-template-columns: 1fr;
+    }
+    .sidebar{
+        display: none;
+    }
+    .sidebarRotas{
+        display: none;
     }
   }

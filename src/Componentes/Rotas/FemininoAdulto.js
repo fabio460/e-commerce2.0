@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import {  useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
+import BtnFlutuante from '../Home/btnFlutuante'
 import Cards from '../ListaProdutos/Cards'
 import Paginacao from '../ListaProdutos/Paginação'
 import SideBarRotas from '../SideBar/SideBarRotas'
@@ -82,6 +83,16 @@ export default function Feminino() {
         })
         
       break;
+
+      case 'jeans':
+        lista.filter(elem=>{
+          if(elem.sexo === 'feminino' && elem.idade === 'adulto' && elem.tipo === 'jeans'){
+            aux.push(elem)
+          }
+          return elem
+        })
+        
+      break;
   
     default:
       lista.filter(elem=>{
@@ -92,23 +103,18 @@ export default function Feminino() {
       })
       break;
   }
-
-
-
   lista = aux
-
-
-  localStorage.setItem('tamanhoDaLista',lista.length)
-  
+  localStorage.setItem('tamanhoDaLista',aux.length)
   const posicao = useSelector(state=>state.IndicePaginacaoReducer)
   const inicio = posicao.inicio
   const fim = posicao.fim
-
+  console.log('inicio'+inicio)
+  console.log('fim'+fim)
   return (
      <div>
         <AppBarBootstrap/>
         <Navegacao sexo={'Feminino'} idade={'Adulto'}/>
-        <div className='containerRotas'>
+        <div className='containerRotas '>
           <div className='sidebarRotas'>
             <SideBarRotas 
               setTipo={setTipo}
@@ -121,16 +127,19 @@ export default function Feminino() {
               sexo={'feminino'}
               idade={'adulto'}
               tudo={'tudo'}
+              jeans={'jeans'}
               // bermudas={'bermudas'}
              />
           </div>
           <div className='listaRotas'>
+            
               <div className='listaProdutos'>
                   {lista.map((item,key)=>{
-                    return (key > inicio && key <= fim) && <Cards item={item} key={key}/>
+                    return (key >= inicio && key < fim) && <Cards item={item} key={key}/>
                   })}
               </div>
               <div className='paginacao'><Paginacao/></div>
+              <BtnFlutuante/>
             </div>
         </div>
      </div>
