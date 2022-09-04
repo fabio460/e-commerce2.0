@@ -96,10 +96,10 @@ export default function InfantilMasculino() {
         <AppBarBootstrap/>
         <Navegacao 
                         setTipo={setTipo}
-                        calcas={'Calças'}
+                        calcas={'calça'}
                         tudo={'tudo'}
                         camisas={'camisas'}
-                        tenis={'tênis'}
+                        tenis={'tenis'}
                         sexo={'masculino'}
                         idade={'adulto'}
                         bermudas={'bermudas'}

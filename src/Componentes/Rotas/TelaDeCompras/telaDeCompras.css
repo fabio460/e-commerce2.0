@@ -1,0 +1,32 @@
+.telaDeCompras{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.telaDeCompras img{
+   width: 60%;
+   height: 100%;
+}
+.telaDeComprasRight{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.telaDeComprasRightBottom{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+@media (max-width:800px) {
+    .telaDeCompras{
+     
+        grid-template-columns: 1fr;
+     
+    }
+    .telaDeCompras img{
+        width: 100%;
+        
+     }
+}

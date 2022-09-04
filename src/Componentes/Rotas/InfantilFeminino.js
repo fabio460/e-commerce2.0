@@ -98,11 +98,14 @@ export default function InfantilFeminino() {
      <div>
         <AppBarBootstrap/>
         <Navegacao 
+         setTipo={setTipo}
            sexo={'feminino'} idade={'infantil'}
            blusas={'blusa'}
            vestido={'vestido'}
            sapatos={'sapato'}
            tudo={'tudo'}
+           calcas={'calça'}
+           shorts={'shorts'}
         />
         <div className='containerRotas'>
           <div className='sidebarRotas'>
@@ -111,7 +114,6 @@ export default function InfantilFeminino() {
               calcas={'Calças'}
               tudo={'tudo'}
               blusas={'blusa'}
-              
               sexo={'feminino'}
               idade={'adulto'}
               shorts={'shorts'}

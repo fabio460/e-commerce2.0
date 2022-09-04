@@ -17,6 +17,8 @@ import Sapatos from './Componentes/Rotas/Sapatos';
 import Tenis from './Componentes/Rotas/Tenis';
 import MasculinoAdulto from './Componentes/Rotas/MasculinoAdulto';
 import FemininoAdulto from './Componentes/Rotas/FemininoAdulto';
+import TelaDeCompra from './Componentes/Rotas/TelaDeCompras/TelaDeCompra';
+
 
 function App() {
   return (
@@ -30,7 +32,7 @@ function App() {
           <Route path="femininoAdulto" element={<FemininoAdulto />} />
           <Route path="plusSise" element={<PlusSise/>} />
           <Route path="infantil" element={<Infantil />} />
-          
+          <Route path="telaDeCompras" element={<TelaDeCompra />} />
           <Route path="InfantilFeminino" element={<InfantilFeminino />} />
           <Route path="InfantilMasculino" element={<InfantilMasculino />} />
           <Route path="PlusSiseFeminino" element={<PlusSiseFeminino/>} />

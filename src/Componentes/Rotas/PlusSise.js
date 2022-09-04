@@ -115,7 +115,17 @@ export default function PlusSise() {
   return (
     <div>
     <AppBarBootstrap/>
-    <Navegacao  idade={'masculino plus size'}/>
+    <Navegacao  idade={'masculino plus size'}
+           setTipo={setTipo}
+           calcas={'calça'}
+           
+           camisas={'camisas'}
+           bermudas={'bermudas'}
+          
+           sexo={'masculino'}
+           
+           tudo={'tudo'}
+    />
     <div className='containerRotas'>
       <div className='sidebarRotas'>
       <SideBarRotas 
