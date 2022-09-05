@@ -92,7 +92,7 @@ export default function InfantilMasculino() {
   const inicio = posicao.inicio
   const fim = posicao.fim
   return (
-     <div>
+     <div >
         <AppBarBootstrap/>
         <Navegacao 
                         setTipo={setTipo}
@@ -105,7 +105,7 @@ export default function InfantilMasculino() {
                         bermudas={'bermudas'}
 
         />
-        <div className='containerRotas'>
+        <div className='containerRotas '>
           <div className='sidebarRotas'>
           <SideBarRotas 
               setTipo={setTipo}

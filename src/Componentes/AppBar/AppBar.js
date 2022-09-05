@@ -222,7 +222,7 @@ export default function AppBarMui() {
               color="default"
             >
               <Avatar 
-                 sx={{width:'38px',height:'38px',padding:"0px"}} src=''
+                 sx={{width:'38px',height:'38px'}} src=''
               />
             </IconButton>
           </Box>

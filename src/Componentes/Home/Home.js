@@ -40,6 +40,7 @@ export default function Home(props) {
     display:'grid',
     gridTemplateColumns:'1fr 3fr',
     gap:'15px',
+  
     marginTop:'20px',
     '@media (max-width:500px)':{
       gridTemplateColumns:'1fr'
@@ -55,17 +56,19 @@ export default function Home(props) {
         </AppBar>
       </HideOnScroll>
       <Toolbar />
-      <Container >
+      <div >
         <Caroulsel/>
-        <Box sx={ContainerStyle}>
-          <div className='sidebar'><SideBar/></div>
-          <div className='listaDeProdutos'>
-            <ListaProdutos />
-            <div className='paginacao'><Paginacao/></div>
-            <BtnFlutuante/>
-          </div>      
-        </Box> 
-      </Container>
+        <div class='container'>
+          <Box sx={ContainerStyle}>
+            <div className='sidebar'><SideBar/></div>
+            <div className='listaDeProdutos'>
+              <ListaProdutos />
+              <div className='paginacao'><Paginacao/></div>
+              <BtnFlutuante/>
+            </div>      
+          </Box> 
+        </div>
+      </div>
     </React.Fragment>
   );
 }

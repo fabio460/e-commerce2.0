@@ -18,7 +18,7 @@ export default function Navegacao({
   }) {
   const navigate = useNavigate()  
   return (
-    <div role="presentation" onClick={handleClick} style={{padding:"1% 3%",display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+    <div class='container' role="presentation" onClick={handleClick} style={{padding:"1% 3%",display:'flex',justifyContent:'space-between',alignItems:'center'}}>
       <Breadcrumbs aria-label="breadcrumb"  >
         <div className='navegacaoHomeLink'>
           <Link
@@ -66,24 +66,24 @@ export default function Navegacao({
 
       </Breadcrumbs>
       <div className='sidebarMibile'>
-          <Typography>
+          <Typography >
             <SideBarMobile
-                           setTipo={setTipo}
-                           calcas={calcas}
-                           shorts={shorts}
-                           blusas={blusas}
-                           sapatos={sapatos}
-                           vestidos={vestidos}
-                           saia={saia}
-                           sexo={sexo}
-                           idade={idade}
-                           tudo={tudo}
-                           jeans={jeans}
-                           bermudas={bermudas}
-                           camisas={camisas}
-                           tenis={tenis}
-                           cropped={cropped}
-                           vestido={vestido}
+                setTipo={setTipo}
+                calcas={calcas}
+                shorts={shorts}
+                blusas={blusas}
+                sapatos={sapatos}
+                vestidos={vestidos}
+                saia={saia}
+                sexo={sexo}
+                idade={idade}
+                tudo={tudo}
+                jeans={jeans}
+                bermudas={bermudas}
+                camisas={camisas}
+                tenis={tenis}
+                cropped={cropped}
+                vestido={vestido}
             />
           </Typography>
         </div>

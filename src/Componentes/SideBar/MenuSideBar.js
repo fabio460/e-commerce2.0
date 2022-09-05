@@ -11,6 +11,13 @@ import ContentCopy from '@mui/icons-material/ContentCopy';
 import ContentPaste from '@mui/icons-material/ContentPaste';
 import Cloud from '@mui/icons-material/Cloud';
 import {useNavigate} from 'react-router-dom'
+import BoyIcon from '@mui/icons-material/Boy';
+import GirlIcon from '@mui/icons-material/Girl';
+import WomanIcon from '@mui/icons-material/Woman';
+import ManIcon from '@mui/icons-material/Man';
+import FemaleIcon from '@mui/icons-material/Female';
+import MaleIcon from '@mui/icons-material/Male';
+import { BoyRounded, DoNotStep, NextWeek, RollerSkating, Shop } from '@mui/icons-material';
 export default function MenuSideBar() {
   const navigate = useNavigate() 
   return (
@@ -18,7 +25,7 @@ export default function MenuSideBar() {
       <MenuList>
         <MenuItem onClick={()=> navigate('/masculinoAdulto')}>
           <ListItemIcon>
-            <ContentCut fontSize="small" />
+            <ManIcon fontSize="large" />
           </ListItemIcon>
           <ListItemText>Masculino</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -27,7 +34,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/femininoAdulto')}>
           <ListItemIcon>
-            <ContentCopy fontSize="small" />
+            <WomanIcon fontSize="large" />
           </ListItemIcon>
           <ListItemText>Feminino</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -36,7 +43,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/PlusSise')}>
           <ListItemIcon>
-            <ContentPaste fontSize="small" />
+            <MaleIcon fontSize="large" />
           </ListItemIcon>
           <ListItemText>Plus Size Masculino</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -45,7 +52,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/PlusSiseFeminino')}>
           <ListItemIcon>
-            <ContentPaste fontSize="small" />
+            <FemaleIcon fontSize="large" />
           </ListItemIcon>
           <ListItemText>Plus Size Feminino</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -54,7 +61,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/InfantilMasculino')}>
           <ListItemIcon>
-            <ContentPaste fontSize="small" />
+            <BoyIcon fontSize="large" />
           </ListItemIcon>
           <ListItemText>Infantil Masculino</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -63,7 +70,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/InfantilFeminino')}>
           <ListItemIcon>
-            <ContentPaste fontSize="small" />
+            <GirlIcon fontSize="large" />
           </ListItemIcon>
           <ListItemText>Infantil Feminino</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -72,7 +79,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/infantil')}>
           <ListItemIcon>
-            <ContentCut fontSize="small" />
+            <BoyRounded fontSize="large" />
           </ListItemIcon>
           <ListItemText>Infantil </ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -81,7 +88,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/sapato')}>
           <ListItemIcon>
-            <ContentCopy fontSize="small" />
+            <RollerSkating fontSize="" />
           </ListItemIcon>
           <ListItemText>Sapatos</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -90,7 +97,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem onClick={()=> navigate('/tenis')}>
           <ListItemIcon>
-            <ContentPaste fontSize="small" />
+            <DoNotStep fontSize="" />
           </ListItemIcon>
           <ListItemText>Tenis</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -99,7 +106,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <ContentCut fontSize="small" />
+            <NextWeek fontSize="small" />
           </ListItemIcon>
           <ListItemText>Bolsas</ListItemText>
           <Typography variant="body2" color="text.secondary">
@@ -108,7 +115,7 @@ export default function MenuSideBar() {
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <ContentCopy fontSize="small" />
+            <Shop fontSize="small" />
           </ListItemIcon>
           <ListItemText>Chapels</ListItemText>
           <Typography variant="body2" color="text.secondary">
