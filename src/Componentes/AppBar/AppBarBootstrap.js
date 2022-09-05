@@ -37,7 +37,7 @@ export default function AppBarBootstrap() {
                 </li>
                 <li class="nav-item">
                    <div class="nav-link" onClick={async()=>{
-                      navigate('/femininoAdulto')
+                      
                       const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
                       localStorage.setItem('lista',JSON.stringify(p))
                       localStorage.setItem('tamanhoDaLista',p.length)
@@ -45,6 +45,7 @@ export default function AppBarBootstrap() {
                           type:"search",
                           payload:{search:""}
                       })
+                      navigate('/femininoAdulto')
                    }}>Feminino</div>
                 </li>
                 <li class="nav-item dropdown">
@@ -53,7 +54,7 @@ export default function AppBarBootstrap() {
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><div class="dropdown-item" onClick={async()=>{
-                            navigate('/InfantilMasculino')
+                            
                             const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
                             localStorage.setItem('lista',JSON.stringify(p))
                             localStorage.setItem('tamanhoDaLista',p.length)
@@ -61,9 +62,10 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })    
+                            navigate('/InfantilMasculino')
                         }}>Meninos</div></li>
                         <li><div class="dropdown-item" onClick={async()=>{
-                            navigate('/InfantilFeminino')
+                            
                             const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
                             localStorage.setItem('lista',JSON.stringify(p))
                             localStorage.setItem('tamanhoDaLista',p.length)
@@ -71,6 +73,7 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })    
+                            navigate('/InfantilFeminino')
                         }}>Meninas</div></li>
                         <li><hr class="dropdown-divider"/></li>
                         <li><div class="dropdown-item" >Calçados</div></li>
@@ -81,8 +84,26 @@ export default function AppBarBootstrap() {
                         Plus Sise
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><div class="dropdown-item" onClick={()=>navigate('/plusSise')}>Masculino</div></li>
-                        <li><div class="dropdown-item" onClick={()=>navigate('/PlusSiseFeminino')}>Feminino</div></li>
+                        <li><div class="dropdown-item" onClick={async()=>{
+                            const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                            localStorage.setItem('lista',JSON.stringify(p))
+                            localStorage.setItem('tamanhoDaLista',p.length)
+                            dispath({
+                                type:"search",
+                                payload:{search:""}
+                            })   
+                            navigate('/plusSise')                
+                        }}>Masculino</div></li>
+                        <li><div class="dropdown-item" onClick={async()=>{
+                            const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                            localStorage.setItem('lista',JSON.stringify(p))
+                            localStorage.setItem('tamanhoDaLista',p.length)
+                            dispath({
+                                type:"search",
+                                payload:{search:""}
+                            })   
+                            navigate('/PlusSiseFeminino')
+                        }}>Feminino</div></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -91,7 +112,7 @@ export default function AppBarBootstrap() {
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><div class="dropdown-item" onClick={async()=>{
-                            navigate('/sapato')
+                            
                             const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
                             localStorage.setItem('lista',JSON.stringify(p))
                             localStorage.setItem('tamanhoDaLista',p.length)
@@ -99,9 +120,10 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })
+                            navigate('/sapato')
                         }}>Sapatos</div></li>
                         <li><div class="dropdown-item" onClick={async()=>{
-                            navigate('/tenis')
+                            
                             const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
                             localStorage.setItem('lista',JSON.stringify(p))
                             localStorage.setItem('tamanhoDaLista',p.length)
@@ -109,6 +131,7 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })    
+                            navigate('/tenis')
                         }}>Tênis</div></li>
                     </ul>
                 </li>

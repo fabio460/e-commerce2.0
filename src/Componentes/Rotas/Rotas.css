@@ -14,6 +14,7 @@
 @media (max-width:500px) {
     .containerRotas {
         grid-template-columns: 1fr;
+        padding: 3%;
     }
     .sidebar{
         display: none;

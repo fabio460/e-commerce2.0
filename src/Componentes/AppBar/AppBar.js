@@ -24,6 +24,7 @@ import Divider from '@mui/material/Divider';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import { ShoppingCart } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -166,7 +167,8 @@ export default function AppBarMui() {
 
   const [texto,setTexto]=React.useState()
   const dispath = useDispatch()
-  const search = 
+  const navigate = useNavigate()
+  const search =     
     dispath({
       type:"search",
       payload:{search:texto}
@@ -185,7 +187,7 @@ export default function AppBarMui() {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Procurar ..."
             inputProps={{ 'aria-label': 'search google maps' }}
-            onChange={e=>setTexto(e.target.value)}
+            onChange={e=>{setTexto(e.target.value);navigate('/')} }
             value={texto}
           />
  

@@ -2,6 +2,7 @@
 import { Button } from '@mui/material'
 import React from 'react'
 import AppBarBootstrap from '../../AppBar/AppBarBootstrap'
+import BtnFlutuante from '../../Home/btnFlutuante'
 import BtnNavegacaoTamanho from './BtnNavegaçãoTamanhos'
 import EstrelinhasFeedback from './EstrelinhasFeedback'
 import './telaDeCompras.css'
@@ -33,6 +34,7 @@ export default function TelaDeCompra() {
               </div>
           </div>
       </div>
+      <BtnFlutuante/>
     </div>
   )
 }
