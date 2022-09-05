@@ -18,6 +18,7 @@ import Tenis from './Componentes/Rotas/Tenis';
 import MasculinoAdulto from './Componentes/Rotas/MasculinoAdulto';
 import FemininoAdulto from './Componentes/Rotas/FemininoAdulto';
 import TelaDeCompra from './Componentes/Rotas/TelaDeCompras/TelaDeCompra';
+import TelaCarrinhoDeCompras from './Componentes/Rotas/TelaCarrinhoDeCompras.js/TelaCarrinhoDeCompras';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="PlusSiseFeminino" element={<PlusSiseFeminino/>} />
           <Route path="sapato" element={<Sapatos />} />
           <Route path="tenis" element={<Tenis />} />
+          <Route path="carrinhoCompras" element={<TelaCarrinhoDeCompras />} />
         </Routes>
       </BrowserRouter>
        

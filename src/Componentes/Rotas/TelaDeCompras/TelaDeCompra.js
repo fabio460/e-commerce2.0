@@ -1,6 +1,7 @@
 
 import { Button } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import AppBarBootstrap from '../../AppBar/AppBarBootstrap'
 import BtnFlutuante from '../../Home/btnFlutuante'
 import BtnNavegacaoTamanho from './BtnNavegaçãoTamanhos'
@@ -8,7 +9,11 @@ import EstrelinhasFeedback from './EstrelinhasFeedback'
 import './telaDeCompras.css'
 export default function TelaDeCompra() {
   const produto = JSON.parse(localStorage.getItem('produto'))
-
+  const navigate = useNavigate()
+  const acionarCarrinho = ()=>{
+    
+    navigate('/carrinhoCompras')
+  }
   return (
     <div>
         <AppBarBootstrap/>
@@ -30,7 +35,7 @@ export default function TelaDeCompra() {
               </div>
               <div className='telaDeComprasRightBottom'>
                 <Button variant="contained" sx={{margin:' 15px 0px'}}>Comprar </Button>
-                <Button variant="outlined">Adicionar no carrinho </Button>
+                <Button variant="outlined" onClick={acionarCarrinho}>Adicionar no carrinho </Button>
               </div>
           </div>
       </div>
