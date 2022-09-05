@@ -15,6 +15,15 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Avatar, Fab } from '@mui/material';
+import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
+
+
+
+import DirectionsIcon from '@mui/icons-material/Directions';
+import { ShoppingCart } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -56,7 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function AppBarContainer() {
+export default function AppBarMui() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -118,6 +127,7 @@ export default function AppBarContainer() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      color='inrerit'
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -154,62 +164,66 @@ export default function AppBarContainer() {
     </Menu>
   );
 
+  const [texto,setTexto]=React.useState()
+  const dispath = useDispatch()
+  const search = 
+    dispath({
+      type:"search",
+      payload:{search:texto}
+    })
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color='inherit' sx={{color:'black',width:'100%'}}>
+      {/* <AppBar position="static" > */}
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
+    
+        <Paper
+          component="form"
+          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 250 }}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Procurar ..."
+            inputProps={{ 'aria-label': 'search google maps' }}
+            onChange={e=>setTexto(e.target.value)}
+            value={texto}
+          />
+ 
+          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton onClick={search} type="button" sx={{ p: '10px' }} aria-label="search">
+            <SearchIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+        </Paper>
+  
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton sx={{margin:"0px 10px"}} size="large" aria-label="show 4 new mails" color="default">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
             </IconButton>
             <IconButton
+              sx={{margin:"0px 10px 0px 0px"}}
               size="large"
               aria-label="show 17 new notifications"
-              color="inherit"
+              color="default"
             >
               <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
+                <ShoppingCart />
               </Badge>
             </IconButton>
             <IconButton
-              size="large"
+              size="small"
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="inherit"
+              color="default"
             >
-              <AccountCircle />
+              <Avatar 
+                 sx={{width:'38px',height:'38px',padding:"0px"}} src=''
+              />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -219,16 +233,17 @@ export default function AppBarContainer() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color="default"
             >
               <MoreIcon />
             </IconButton>
+            
           </Box>
+          
         </Toolbar>
-      </AppBar>
+      {/* </AppBar> */}
       {renderMobileMenu}
       {renderMenu}
     </Box>
-
   );
 }

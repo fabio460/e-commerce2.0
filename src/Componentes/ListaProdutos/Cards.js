@@ -11,18 +11,18 @@ export default function Cards({item}) {
   const cardStyle ={ 
     width: '100%',
     margin:'auto',
-    height:400 ,
+    height:'350px' ,
     display:'flex',
     flexDirection:'column',
     justifyContent:'space-between',
     '@media (max-width:500px)':{
-      height:550
+      height:'500px'
     }
   } 
   const CardMediaStyle = {
-    height:'220px',
+    height:'200px',
     '@media (max-width:500px)':{
-      height:'380px',
+      height:'350px',
     }
   }
   const navigate = useNavigate()

@@ -20,8 +20,8 @@ export default function TelaDeCompra() {
               <div className='telaDeComprasRightTop'>
                 <h4>{produto.nome}</h4>
                 <EstrelinhasFeedback/>
-                <div>R$ {produto.valor}</div>
-                <div>ou 6x de 
+                <div >R$ {produto.valor}</div>
+                <div className='telaDeComprasRightBottomItens'>ou 6x de 
                   <strong> R$ {(parseFloat(produto.valor)/6).toFixed(2).toString().replace('.',',')}</strong>
                 </div>
                 <div>Tamanho</div>

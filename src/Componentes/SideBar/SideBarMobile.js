@@ -92,8 +92,8 @@ export default function SideBarMobile({
             console.log(null)
         }
     });
-    console.log(aux)
-    console.log(options)
+    //console.log(aux)
+    //console.log(options)
     options = aux
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);

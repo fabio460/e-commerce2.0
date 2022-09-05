@@ -1,8 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import AppBarMui from './AppBar'
+import AppBar from './AppBar'
 import './AppBar.css'
 export default function AppBarBootstrap() {
   const navigate = useNavigate()  
+  const dispath = useDispatch()
+  function LimparBusca() {
+    
+  }
   return (
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,18 +24,54 @@ export default function AppBarBootstrap() {
                 <div class="nav-link active" aria-current="page" onClick={()=>navigate('/')}>Home</div>
                 </li>
                 <li class="nav-item">
-                   <div class="nav-link" onClick={()=>navigate('/masculinoAdulto')}>Masculino</div>
+                   <div class="nav-link" onClick={async()=>{
+                        const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                        localStorage.setItem('lista',JSON.stringify(p))
+                        localStorage.setItem('tamanhoDaLista',p.length)
+                        dispath({
+                            type:"search",
+                            payload:{search:""}
+                        })
+                        navigate('/masculinoAdulto');
+                    }}>Masculino</div>
                 </li>
                 <li class="nav-item">
-                   <div class="nav-link" onClick={()=>navigate('/femininoAdulto')}>Feminino</div>
+                   <div class="nav-link" onClick={async()=>{
+                      navigate('/femininoAdulto')
+                      const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                      localStorage.setItem('lista',JSON.stringify(p))
+                      localStorage.setItem('tamanhoDaLista',p.length)
+                      dispath({
+                          type:"search",
+                          payload:{search:""}
+                      })
+                   }}>Feminino</div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Infantil
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><div class="dropdown-item" onClick={()=>navigate('/InfantilMasculino')}>Meninos</div></li>
-                        <li><div class="dropdown-item" onClick={()=>navigate('/InfantilFeminino')}>Meninas</div></li>
+                        <li><div class="dropdown-item" onClick={async()=>{
+                            navigate('/InfantilMasculino')
+                            const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                            localStorage.setItem('lista',JSON.stringify(p))
+                            localStorage.setItem('tamanhoDaLista',p.length)
+                            dispath({
+                                type:"search",
+                                payload:{search:""}
+                            })    
+                        }}>Meninos</div></li>
+                        <li><div class="dropdown-item" onClick={async()=>{
+                            navigate('/InfantilFeminino')
+                            const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                            localStorage.setItem('lista',JSON.stringify(p))
+                            localStorage.setItem('tamanhoDaLista',p.length)
+                            dispath({
+                                type:"search",
+                                payload:{search:""}
+                            })    
+                        }}>Meninas</div></li>
                         <li><hr class="dropdown-divider"/></li>
                         <li><div class="dropdown-item" >Calçados</div></li>
                     </ul>
@@ -47,14 +90,32 @@ export default function AppBarBootstrap() {
                         Calçados
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><div class="dropdown-item" onClick={()=>navigate('/sapato')}>Sapatos</div></li>
-                        <li><div class="dropdown-item" onClick={()=>navigate('/tenis')}>Tênis</div></li>
+                        <li><div class="dropdown-item" onClick={async()=>{
+                            navigate('/sapato')
+                            const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                            localStorage.setItem('lista',JSON.stringify(p))
+                            localStorage.setItem('tamanhoDaLista',p.length)
+                            dispath({
+                                type:"search",
+                                payload:{search:""}
+                            })
+                        }}>Sapatos</div></li>
+                        <li><div class="dropdown-item" onClick={async()=>{
+                            navigate('/tenis')
+                            const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+                            localStorage.setItem('lista',JSON.stringify(p))
+                            localStorage.setItem('tamanhoDaLista',p.length)
+                            dispath({
+                                type:"search",
+                                payload:{search:""}
+                            })    
+                        }}>Tênis</div></li>
                     </ul>
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success" type="submit">Search</button>
+               
+                <AppBarMui/>
             </form>
             </div>
         </div>

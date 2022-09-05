@@ -19,14 +19,30 @@
     justify-content: space-between;
     flex-direction: column;
 }
+.telaDeComprasRightTop{
+    /* display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 230px; */
+    
+}
+.telaDeComprasRightBottomItens{
+    margin-bottom: 30px;
+}
 @media (max-width:800px) {
     .telaDeCompras{
      
         grid-template-columns: 1fr;
      
     }
+    .telaDeComprasRightBottom{
+        margin-bottom: 10px;
+    }
     .telaDeCompras img{
         width: 100%;
         
      }
+    .telaDeComprasRightBottomItens{
+        margin-bottom: 10px;
+    }
 }
