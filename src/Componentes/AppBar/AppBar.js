@@ -23,8 +23,8 @@ import Divider from '@mui/material/Divider';
 
 import DirectionsIcon from '@mui/icons-material/Directions';
 import { ShoppingCart } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; 
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -69,10 +69,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function AppBarMui() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const tamanhoDoCarrinho = useSelector(state=>state.CarrinhoDeComprasReducer.tamanhoDoCarrinho)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  console.log(tamanhoDoCarrinho)
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -144,8 +144,8 @@ export default function AppBarMui() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+          <Badge badgeContent={tamanhoDoCarrinho} color="error" onClick={()=>navigate('/carrinhoCompras')}>
+            <ShoppingCart />
           </Badge>
         </IconButton>
         <p>Notifications</p>
@@ -167,13 +167,13 @@ export default function AppBarMui() {
 
   const [texto,setTexto]=React.useState()
   const dispath = useDispatch()
-  const navigate = useNavigate()
+  
   const search =     
     dispath({
       type:"search",
       payload:{search:texto}
     })
-
+  const navigate = useNavigate()
   return (
     <Box sx={{ flexGrow: 1 }}>
       {/* <AppBar position="static" > */}
@@ -213,7 +213,7 @@ export default function AppBarMui() {
               aria-label="show 17 new notifications"
               color="default"
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={parseInt(tamanhoDoCarrinho)} color="error" onClick={()=>navigate('/carrinhoCompras')}>
                 <ShoppingCart />
               </Badge>
             </IconButton>

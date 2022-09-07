@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,6 +16,7 @@ import SideBar from '../SideBar/SideBar';
 import Caroulsel from './Caroulsel';
 import AppBarBootstrap from '../AppBar/AppBarBootstrap';
 import BtnFlutuante from './btnFlutuante';
+import { useDispatch } from 'react-redux';
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -46,7 +47,23 @@ export default function Home(props) {
       gridTemplateColumns:'1fr'
     }
   }
+  const dispath = useDispatch()
+  const [carrinhoList,setCarrinhoList]=useState([])
+  async function getCarrinho() {
+    const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
+    
+    setCarrinhoList(l)
+    dispath({
+      type:'tamanhoDoCarrinho',
+      payload:{tamanhoDoCarrinho:l.length}
+    })
+    
+  } 
 
+  useEffect(()=>{
+    getCarrinho()
+
+  },[])
   return (
     <React.Fragment>
       <CssBaseline />

@@ -10,12 +10,27 @@ import './telaDeCompras.css'
 export default function TelaDeCompra() {
   const produto = JSON.parse(localStorage.getItem('produto'))
   const navigate = useNavigate()
+  const [tamanho,setTamanho]=React.useState(38)
+  const [quantidade,setQuantidade]=React.useState(1)
   const acionarCarrinho = ()=>{
-    fetch('https://api-e-commerce.vercel.app/postarCarrinho',{
-      
-    })
+    try {
+      const formdata = new FormData()
+      formdata.append("nome",produto.nome)
+      formdata.append("imagem1",produto.imagem1)
+      formdata.append("valor",produto.valor)
+      formdata.append("quantidade",quantidade)
+      formdata.append("tamanho",tamanho)
+      fetch('https://api-e-commerce.vercel.app/postarCarrinho',{
+        method:"POST",
+        body:formdata
+      })
+    } catch (error) {
+      console.log(error)
+    }
     navigate('/carrinhoCompras')
+    
   }
+  
   return (
     <div>
         <AppBarBootstrap/>
@@ -33,7 +48,7 @@ export default function TelaDeCompra() {
                   <strong> R$ {(parseFloat(produto.valor)/6).toFixed(2).toString().replace('.',',')}</strong>
                 </div>
                 <div>Tamanho</div>
-                <BtnNavegacaoTamanho/>
+                <BtnNavegacaoTamanho setTamanho={setTamanho}/>
               </div>
               <div className='telaDeComprasRightBottom'>
                 <Button variant="contained" sx={{margin:' 15px 0px'}}>Comprar </Button>

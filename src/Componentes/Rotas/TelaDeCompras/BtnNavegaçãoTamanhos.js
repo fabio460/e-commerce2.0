@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 
 
-export default function BtnNavegacaoTamanho() {
+export default function BtnNavegacaoTamanho({setTamanho}) {
+  
   const [ativo,setAtivo]=React.useState([
     'primary','inrerit','inrerit','inrerit','inrerit'
   ])  
@@ -12,10 +13,29 @@ export default function BtnNavegacaoTamanho() {
     let arrAux = ativo
     zerarArray[parseInt(e)]='primary'
     setAtivo(zerarArray)
-  }
-
-  const Color = ()=>{
-    return 'primary'
+    switch (e) {
+      case '0':
+        setTamanho(38)
+        break;
+        case '1':
+          setTamanho(39)
+        break;        
+        case '2':
+          setTamanho(40)
+        break; 
+        case '3':   
+        setTamanho(41)
+        break;
+        case '4':
+          setTamanho(42)
+        break;        
+        case '5':
+          setTamanho(43)
+        break;           
+      default:
+        setTamanho(38)
+        break;
+    }
   }
   
   const boxStyle = { 
