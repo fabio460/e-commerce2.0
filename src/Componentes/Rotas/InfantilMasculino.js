@@ -1,9 +1,10 @@
-import { Button } from '@mui/material'
+import { Button, ListItemButton, ListItemText } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
 import BtnFlutuante from '../Home/btnFlutuante'
 import Cards from '../ListaProdutos/Cards'
+import CardsCarregando from '../ListaProdutos/CardsCarregando'
 import Paginacao from '../ListaProdutos/Paginação'
 import SideBarRotas from '../SideBar/SideBarRotas'
 import BtnModalDaNavegacao from './BtnModalNavegacao'
@@ -13,7 +14,7 @@ export default function InfantilMasculino() {
   var lista = JSON.parse(localStorage.getItem('lista'))
   let aux = []
   const [tipo,setTipo]=React.useState('');
-
+  const [Display,setDisplay]=useState('block')
 
 
 
@@ -50,6 +51,7 @@ export default function InfantilMasculino() {
     }
     listaSideBar = [ ...new Set(listaSideBar)]
     setListaSidebar(listaSideBar)
+    setDisplay('none')
   }
 
   const getTipo = (elem)=>{
@@ -193,11 +195,16 @@ export default function InfantilMasculino() {
           
           {listaSideBarLi.map((elem,key)=>{
                 return <div onClick={()=> getTipo(elem)}>
-                  <Button sx={{width:"100%",textAlign:'left'}}>{elem}</Button>
+                  <ListItemButton>
+                    <ListItemText primary={elem} />
+                  </ListItemButton>
                 </div>
               })}
           </div>
           <div className='listaRotas'>
+              <div style={{display:Display}} >
+                  <CardsCarregando/>
+              </div>
               <div className='listaProdutos'>
                   {list.map((item,key)=>{
                     return (key > inicio && key <= fim) && <Cards item={item} key={key}/>

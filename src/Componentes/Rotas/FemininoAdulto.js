@@ -1,8 +1,10 @@
+import { ListItemButton, ListItemText } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import {  useDispatch, useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
 import BtnFlutuante from '../Home/btnFlutuante'
 import Cards from '../ListaProdutos/Cards'
+import CardsCarregando from '../ListaProdutos/CardsCarregando'
 import Paginacao from '../ListaProdutos/Paginação'
 import SideBarRotas from '../SideBar/SideBarRotas'
 import BtnModalDaNavegacao from './BtnModalNavegacao'
@@ -16,7 +18,7 @@ export default function Feminino() {
   const [listaSideBarLi,setListaSidebar]=useState([])
   let busca = useSelector(state=>state.SearchReducer.search)
   const dispath = useDispatch()
-
+  const [Display,setDisplay]=useState('block')
 
 
   async function getList(){
@@ -45,6 +47,7 @@ export default function Feminino() {
     }
     listaSideBar = [ ...new Set(listaSideBar)]
     setListaSidebar(listaSideBar)
+    setDisplay('none')
   }
 
   const getTipo = (elem)=>{
@@ -196,28 +199,18 @@ export default function Feminino() {
           </div>
         <div className='containerRotas '>
           <div className='sidebarRotas'>
-            {/* <SideBarRotas 
-              setTipo={setTipo}
-              calcas={'Calças'}
-              shorts={'Shorts'}
-              blusas={'Blusas'}
-              sapatos={'Sapatos'}
-              vestidos={'Vestidos'}
-              saia={'saia'}
-              sexo={'feminino'}
-              idade={'adulto'}
-              tudo={'tudo'}
-              jeans={'jeans'}
-              // bermudas={'bermudas'}
-             /> */}
              {listaSideBarLi.map((elem,key)=>{
               return <div onClick={()=> getTipo(elem)}>
-                {elem}
+                <ListItemButton>
+                    <ListItemText primary={elem} />
+                 </ListItemButton>
               </div>
              })}
           </div>
           <div className='listaRotas'>
-            
+              <div style={{display:Display}} >
+                  <CardsCarregando/>
+              </div>
               <div className='listaProdutos'>
                   {list.map((item,key)=>{
                     return (key >= inicio && key < fim) && <Cards item={item} key={key}/>

@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import './ListaProdutos.css'
 import CarregandoCards from './CarregandoCards'
+import CardsCarregando from './CardsCarregando'
 export default function ListaProdutos() {
    const [list,setList]=useState([])  
    const [Display,setDisplay]=useState('block')
@@ -66,7 +67,7 @@ export default function ListaProdutos() {
    const fim = posicao.fim
   return (
    <div>
-    <div style={{display:Display}} ><CarregandoCards/></div>
+    <div style={{display:Display}} ><CardsCarregando/></div>
      <div className='listaProdutos'>
         {list.map((item,key)=>{
            return (key > inicio && key <= fim) && <Cards item={item} key={key}/>

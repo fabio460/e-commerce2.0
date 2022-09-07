@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -10,6 +11,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Chip, Fab } from '@mui/material';
+import { DeleteOutlined, NavigateNext } from '@mui/icons-material';
 
 export default function BtnModalDaNavegacao({listaSideBarLi,getTipo}) {
   const [state, setState] = React.useState({
@@ -56,7 +59,17 @@ export default function BtnModalDaNavegacao({listaSideBarLi,getTipo}) {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>itens</Button>
+          {/* <Button onClick={toggleDrawer(anchor, true)}>Categorias</Button> */}
+          {/* <Chip
+            label={<ArrowBackIcon />}
+            deleteIcon={<ArrowBackIcon />}
+            variant="outlined"
+            
+          /> */}
+        
+          <Fab color="primary" aria-label="add" onClick={toggleDrawer(anchor, true)}>
+            <ArrowBackIcon />
+          </Fab>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
