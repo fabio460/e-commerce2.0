@@ -22,7 +22,7 @@ export default function ListaProdutos() {
       setList(aux)
       localStorage.setItem('lista',JSON.stringify(aux))
       localStorage.setItem('tamanhoDaLista',aux.length)
-     
+      
 
       if (list.length < 1 ) {
         setList(p)
@@ -39,7 +39,7 @@ export default function ListaProdutos() {
         localStorage.setItem('lista',JSON.stringify(p))
         localStorage.setItem('tamanhoDaLista',p.length)
       }
-      console.log(list)
+      
       dispath({
         type:'indice',
         payload:{

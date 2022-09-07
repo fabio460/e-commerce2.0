@@ -11,7 +11,9 @@ export default function TelaDeCompra() {
   const produto = JSON.parse(localStorage.getItem('produto'))
   const navigate = useNavigate()
   const acionarCarrinho = ()=>{
-    
+    fetch('https://api-e-commerce.vercel.app/postarCarrinho',{
+      
+    })
     navigate('/carrinhoCompras')
   }
   return (

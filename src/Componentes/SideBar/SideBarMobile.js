@@ -88,8 +88,6 @@ export default function SideBarMobile({
         if (element) {
             //console.log(element.props.children.props.children)
             aux.push(<div onClick={()=>alterarTipo((element.props.children.props.children).toString())}>{element.props.children.props.children}</div>)
-        }else{
-            console.log(null)
         }
     });
     //console.log(aux)

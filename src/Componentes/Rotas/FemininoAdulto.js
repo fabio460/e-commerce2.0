@@ -1,21 +1,86 @@
-import React, { useState } from 'react'
-import {  useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import {  useDispatch, useSelector } from 'react-redux'
 import AppBarBootstrap from '../AppBar/AppBarBootstrap'
 import BtnFlutuante from '../Home/btnFlutuante'
 import Cards from '../ListaProdutos/Cards'
 import Paginacao from '../ListaProdutos/Paginação'
 import SideBarRotas from '../SideBar/SideBarRotas'
+import BtnModalDaNavegacao from './BtnModalNavegacao'
 import Navegacao from './Navegacao'
 import './Rotas.css'
 export default function Feminino() {
   var lista = JSON.parse(localStorage.getItem('lista'))
   let aux = []
+  let listaSideBar =[]
+  const [list,setList]=useState([]) 
+  const [listaSideBarLi,setListaSidebar]=useState([])
+  let busca = useSelector(state=>state.SearchReducer.search)
+  const dispath = useDispatch()
+
+
+
+  async function getList(){
+    const p = await fetch('https://api-e-commerce.vercel.app/listar').then(res=>res.json())
+    p.filter(elem=>{
+      if(elem.sexo === 'feminino' && elem.idade === 'adulto'){
+        aux.push(elem)
+        listaSideBar.push(elem.tipo)
+      }
+      return elem 
+    })
+    setList(aux)
+    dispath({
+      type:'lista',
+      payload:{lista:aux}
+    })
+    let search = []
+    aux.filter(e=>{
+      if (e.nome.includes(busca)) {
+        search.push(e)
+      }
+    })
+    setList(search)
+    if(busca === undefined){
+        setList(aux)
+    }
+    listaSideBar = [ ...new Set(listaSideBar)]
+    setListaSidebar(listaSideBar)
+  }
+
+  const getTipo = (elem)=>{
+      
+      let auxTipo=[]
+      setList(aux)
+      aux.filter(item=>{
+        if (item.tipo === elem) {
+          auxTipo.push(item)
+        }
+      })
+      setList(auxTipo)
+      dispath({
+        type:'indice',
+        payload:{
+            inicio:0,
+            fim:8
+        }
+      })
+  }
+  
+  useEffect(()=>{
+    getList()
+    
+  },[busca])
+
+
+
+
+
 
   const [tipo,setTipo]=useState('');
   switch (tipo) {
 
     case 'saia':
-      lista.filter(elem=>{
+      list.filter(elem=>{
         if(elem.sexo === 'feminino' && elem.idade === 'adulto' && elem.tipo === 'saia'){
           aux.push(elem)
         }
@@ -103,13 +168,13 @@ export default function Feminino() {
       })
       break;
   }
-  lista = aux
-  localStorage.setItem('tamanhoDaLista',aux.length)
+  //lista = aux
+  //setList(lista)
+  localStorage.setItem('tamanhoDaLista',list.length)
   const posicao = useSelector(state=>state.IndicePaginacaoReducer)
   const inicio = posicao.inicio
   const fim = posicao.fim
-  console.log('inicio'+inicio)
-  console.log('fim'+fim)
+ 
   return (
      <div>
         <AppBarBootstrap/>
@@ -126,9 +191,12 @@ export default function Feminino() {
             tudo={'tudo'}
             jeans={'jeans'}
           />
+          <div className='modalNavegacao'>
+            <BtnModalDaNavegacao listaSideBarLi={listaSideBarLi} getTipo={getTipo}/>
+          </div>
         <div className='containerRotas '>
           <div className='sidebarRotas'>
-            <SideBarRotas 
+            {/* <SideBarRotas 
               setTipo={setTipo}
               calcas={'Calças'}
               shorts={'Shorts'}
@@ -141,12 +209,17 @@ export default function Feminino() {
               tudo={'tudo'}
               jeans={'jeans'}
               // bermudas={'bermudas'}
-             />
+             /> */}
+             {listaSideBarLi.map((elem,key)=>{
+              return <div onClick={()=> getTipo(elem)}>
+                {elem}
+              </div>
+             })}
           </div>
           <div className='listaRotas'>
             
               <div className='listaProdutos'>
-                  {lista.map((item,key)=>{
+                  {list.map((item,key)=>{
                     return (key >= inicio && key < fim) && <Cards item={item} key={key}/>
                   })}
               </div>

@@ -32,6 +32,13 @@ export default function AppBarBootstrap() {
                             type:"search",
                             payload:{search:""}
                         })
+                        dispath({
+                            type:'indice',
+                            payload:{
+                                inicio:0,
+                                fim:8
+                            }
+                          })
                         navigate('/masculinoAdulto');
                     }}>Masculino</div>
                 </li>
@@ -44,6 +51,13 @@ export default function AppBarBootstrap() {
                       dispath({
                           type:"search",
                           payload:{search:""}
+                      })
+                      dispath({
+                        type:'indice',
+                        payload:{
+                            inicio:0,
+                            fim:8
+                        }
                       })
                       navigate('/femininoAdulto')
                    }}>Feminino</div>
@@ -62,6 +76,13 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })    
+                            dispath({
+                                type:'indice',
+                                payload:{
+                                    inicio:0,
+                                    fim:8
+                                }
+                              })
                             navigate('/InfantilMasculino')
                         }}>Meninos</div></li>
                         <li><div class="dropdown-item" onClick={async()=>{
@@ -73,6 +94,13 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })    
+                            dispath({
+                                type:'indice',
+                                payload:{
+                                    inicio:0,
+                                    fim:8
+                                }
+                            })
                             navigate('/InfantilFeminino')
                         }}>Meninas</div></li>
                         <li><hr class="dropdown-divider"/></li>
@@ -92,6 +120,13 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })   
+                            dispath({
+                                type:'indice',
+                                payload:{
+                                    inicio:0,
+                                    fim:8
+                                }
+                            })
                             navigate('/plusSise')                
                         }}>Masculino</div></li>
                         <li><div class="dropdown-item" onClick={async()=>{
@@ -102,6 +137,13 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })   
+                            dispath({
+                                type:'indice',
+                                payload:{
+                                    inicio:0,
+                                    fim:8
+                                }
+                            })
                             navigate('/PlusSiseFeminino')
                         }}>Feminino</div></li>
                     </ul>
@@ -120,6 +162,13 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })
+                            dispath({
+                                type:'indice',
+                                payload:{
+                                    inicio:0,
+                                    fim:8
+                                }
+                            })
                             navigate('/sapato')
                         }}>Sapatos</div></li>
                         <li><div class="dropdown-item" onClick={async()=>{
@@ -131,6 +180,13 @@ export default function AppBarBootstrap() {
                                 type:"search",
                                 payload:{search:""}
                             })    
+                            dispath({
+                                type:'indice',
+                                payload:{
+                                    inicio:0,
+                                    fim:8
+                                }
+                            })
                             navigate('/tenis')
                         }}>Tênis</div></li>
                     </ul>

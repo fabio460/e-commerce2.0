@@ -11,7 +11,16 @@
    display: none;
  
 }
+
+.modalNavegacao{
+    display: none;
+}
 @media (max-width:500px) {
+    .modalNavegacao{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -30px;
+    }
     .containerRotas {
         grid-template-columns: 1fr;
         padding: 3%;

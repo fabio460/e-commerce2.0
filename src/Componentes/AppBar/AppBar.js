@@ -187,7 +187,10 @@ export default function AppBarMui() {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Procurar ..."
             inputProps={{ 'aria-label': 'search google maps' }}
-            onChange={e=>{setTexto(e.target.value);navigate('/')} }
+            onChange={e=>{
+              setTexto(e.target.value)}
+              //navigate('/')
+            }
             value={texto}
           />
  

@@ -67,7 +67,7 @@ export default function Navegacao({
       </Breadcrumbs>
       <div className='sidebarMibile'>
           <Typography >
-            <SideBarMobile
+            {/* <SideBarMobile
                 setTipo={setTipo}
                 calcas={calcas}
                 shorts={shorts}
@@ -84,7 +84,8 @@ export default function Navegacao({
                 tenis={tenis}
                 cropped={cropped}
                 vestido={vestido}
-            />
+            /> */}
+            
           </Typography>
         </div>
     </div>
