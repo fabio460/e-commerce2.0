@@ -140,11 +140,12 @@ export default function AppBarMui() {
       </MenuItem>
       <MenuItem>
         <IconButton
+        onClick={()=>navigate('/carrinhoCompras')}
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={tamanhoDoCarrinho} color="error" onClick={()=>navigate('/carrinhoCompras')}>
+          <Badge badgeContent={tamanhoDoCarrinho} color="error" >
             <ShoppingCart />
           </Badge>
         </IconButton>
