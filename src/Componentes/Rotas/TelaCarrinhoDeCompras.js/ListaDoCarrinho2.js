@@ -24,6 +24,7 @@ import { visuallyHidden } from '@mui/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import CarregandoLista from './CarregandoLista';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function createData(name, calories, fat, carbs, protein, tamanho) {
   return {
@@ -302,7 +303,7 @@ export default function ListaDoCarrinho2({item}) {
             component="div"
           >
             <div>Carrinho de compras</div>
-            <Button>Home</Button>
+            <Button onClick={()=>navigate('/')}>Home</Button>
           </Typography>
          
         )}
@@ -333,7 +334,7 @@ export default function ListaDoCarrinho2({item}) {
 
 
 
-
+   const navigate = useNavigate()
 
 
 
