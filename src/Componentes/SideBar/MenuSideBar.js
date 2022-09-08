@@ -20,10 +20,14 @@ import MaleIcon from '@mui/icons-material/Male';
 import { BoyRounded, DoNotStep, NextWeek, RollerSkating, Shop } from '@mui/icons-material';
 export default function MenuSideBar() {
   const navigate = useNavigate() 
+  const mudarRota = (id)=>{
+     navigate(id)
+     window.scrollTo(0,0)
+  }
   return (
     <Paper sx={{ width: '100%', maxWidth: '100%' }}>
       <MenuList>
-        <MenuItem onClick={()=> navigate('/masculinoAdulto')}>
+        <MenuItem  onClick={e=>mudarRota('/masculinoAdulto')}>
           <ListItemIcon>
             <ManIcon fontSize="large" />
           </ListItemIcon>
@@ -32,7 +36,7 @@ export default function MenuSideBar() {
            
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/femininoAdulto')}>
+        <MenuItem  onClick={e=>mudarRota('/femininoAdulto')}>
           <ListItemIcon>
             <WomanIcon fontSize="large" />
           </ListItemIcon>
@@ -41,7 +45,7 @@ export default function MenuSideBar() {
             
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/PlusSise')}>
+        <MenuItem onClick={e=>mudarRota('/PlusSise')} >
           <ListItemIcon>
             <MaleIcon fontSize="large" />
           </ListItemIcon>
@@ -50,7 +54,7 @@ export default function MenuSideBar() {
           
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/PlusSiseFeminino')}>
+        <MenuItem onClick={e=>mudarRota('/PlusSiseFeminino')} >
           <ListItemIcon>
             <FemaleIcon fontSize="large" />
           </ListItemIcon>
@@ -59,7 +63,7 @@ export default function MenuSideBar() {
             
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/InfantilMasculino')}>
+        <MenuItem onClick={e=>mudarRota('/InfantilMasculino')} >
           <ListItemIcon>
             <BoyIcon fontSize="large" />
           </ListItemIcon>
@@ -68,7 +72,7 @@ export default function MenuSideBar() {
           
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/InfantilFeminino')}>
+        <MenuItem  onClick={e=>mudarRota('/InfantilFeminino')}>
           <ListItemIcon>
             <GirlIcon fontSize="large" />
           </ListItemIcon>
@@ -77,7 +81,7 @@ export default function MenuSideBar() {
            
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/infantil')}>
+        <MenuItem  onClick={e=>mudarRota('/infantil')}>
           <ListItemIcon>
             <BoyRounded fontSize="large" />
           </ListItemIcon>
@@ -86,7 +90,7 @@ export default function MenuSideBar() {
             
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/sapato')}>
+        <MenuItem  onClick={e=>mudarRota('/sapato')}>
           <ListItemIcon>
             <RollerSkating fontSize="" />
           </ListItemIcon>
@@ -95,7 +99,7 @@ export default function MenuSideBar() {
             
           </Typography>
         </MenuItem>
-        <MenuItem onClick={()=> navigate('/tenis')}>
+        <MenuItem   onClick={e=>mudarRota('/tenis')}>
           <ListItemIcon>
             <DoNotStep fontSize="" />
           </ListItemIcon>
