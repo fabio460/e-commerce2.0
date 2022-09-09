@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './carrinho.css'
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -23,37 +24,43 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import CarregandoLista from './CarregandoLista';
-import { Button } from '@mui/material';
+import { Button, Fab, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-function createData(name, calories, fat, carbs, protein, tamanho) {
+function createData(name, calories, nome, valor, quantidade, tamanho) {
   return {
     name,
     calories,
-    fat,
-    carbs,
-    protein,
+    nome,
+    valor,
+    quantidade,
     tamanho
   };
 }
 
 let rows = [
-  createData(<CarregandoLista/>, <CarregandoLista/>,<CarregandoLista/>, <CarregandoLista/>, <CarregandoLista/>),
-//   createData('Donut', 452, 25.0, 51, 4.9),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-//   createData('Honeycomb', 408, 3.2, 87, 6.5),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Jelly Bean', 375, 0.0, 94, 0.0),
-//   createData('teste', 518, 26.0, 65, 7.0),
-//   createData('Lollipop', 392, 0.2, 98, 0.0),
-//   createData('Marshmallow', 318, 0, 81, 2.0),
-//   createData('Nougat', 360, 19.0, 9, 37.0),
-//   createData('Oreo', 437, 18.0, 63, 4.0),
+  createData("",
+    <CarregandoLista/>,
+    <CarregandoLista/>,
+     <CarregandoLista/>,
+      <CarregandoLista/>,
+      <CarregandoLista/>,
+      <CarregandoLista/>
+  ),
 ];
 
-
+const almentarQuantidade = ()=>{
+  alert()
+}
+const diminuirQuantidade = async(e)=>{
+  const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
+  l.forEact(elem=>{
+    if (elem._id === e) {
+      console.log(elem)
+    }
+  })
+  
+}
 async function getCarrinho() {
     const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
     rows = []
@@ -61,10 +68,14 @@ async function getCarrinho() {
         rows.push(
             createData(
               <div key={item._id} style={{display:"none"}}>{item._id}</div>,
-              <img src={item.imagem1} style={{width:"80px",height:"80px",margin:"8px"}}/>,
+              <img src={item.imagem1} className='imagemDaListaCarrinho' />,
               item.nome,
               item.valor,
-              item.quantidade,
+              <div style={{display:'flex',alignItems:'center'}}>
+                <IconButton onClick={()=> diminuirQuantidade(item._id)} sx={{height:'30px',margin:'0px 5px'}}> - </IconButton>
+                {item.quantidade}
+                <IconButton onClick={almentarQuantidade} sx={{height:'30px', margin:'0px 5px'}}> + </IconButton>
+              </div>,
               item.tamanho,
               ),
         )
@@ -88,25 +99,25 @@ async function getCarrinho() {
       label: 'Produto',
     },
     {
-      id: 'Nome',
+      id: 'nome',
       numeric: true,
       disablePadding: false,
       label: 'Nome',
     },
     {
-      id: 'Preço',
+      id: 'valor',
       numeric: true,
       disablePadding: false,
       label: 'Preço',
     },
     {
-      id: 'Quantidade',
+      id: 'quantidade',
       numeric: true,
       disablePadding: false,
       label: 'Quantidade',
     },
     {
-        id: 'Tamanho',
+        id: 'tamanho',
         numeric: true,
         disablePadding: false,
         label: 'Tamanho',
@@ -160,16 +171,16 @@ const headCells2 = [
     label: 'Calories',
   },
   {
-    id: 'fat',
+    id: 'nome',
     numeric: true,
     disablePadding: false,
     label: 'Fat (g)',
   },
   {
-    id: 'carbs',
+    id: 'valor',
     numeric: true,
     disablePadding: false,
-    label: 'Carbs (g)',
+    label: 'Valor(g)',
   },
   {
     id: 'protein',
@@ -302,7 +313,7 @@ export default function ListaDoCarrinho2({item}) {
             id="tableTitle"
             component="div"
           >
-            <div>Carrinho de compras</div>
+            <div>Meu carrinho</div>
             <Button onClick={()=>navigate('/')}>Home</Button>
           </Typography>
          
@@ -370,7 +381,6 @@ export default function ListaDoCarrinho2({item}) {
         selected.slice(selectedIndex + 1),
       );
     }
-    deletarItens(selected)
     
     setSelected(newSelected);
   };
@@ -395,7 +405,7 @@ export default function ListaDoCarrinho2({item}) {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%',height:"" }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} selected={selected}/>
         <TableContainer>
@@ -449,9 +459,9 @@ export default function ListaDoCarrinho2({item}) {
                         {row.name}
                       </TableCell>
                       <TableCell align="left">{row.calories}</TableCell>
-                      <TableCell align="left">{row.fat}</TableCell>
-                      <TableCell align="left">{row.carbs}</TableCell>
-                      <TableCell align="left">{row.protein}</TableCell>
+                      <TableCell align="left">{row.nome}</TableCell>
+                      <TableCell align="left">{row.valor}</TableCell>
+                      <TableCell align="left">{row.quantidade}</TableCell>
                       <TableCell align="left">{row.tamanho}</TableCell>
                     </TableRow>
                   );

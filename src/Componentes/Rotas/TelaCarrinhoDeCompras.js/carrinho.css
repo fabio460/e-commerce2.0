@@ -1,0 +1,27 @@
+.ListaDoCarrinho{
+    display: grid;
+    grid-template-rows: 7fr 1fr;
+    height: 100vh;
+}
+.ListaDoCarrinhoUp{
+   overflow-y: scroll;
+   
+}
+.ListaDoCarrinhoDown{
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.imagemDaListaCarrinho{
+    width:80px;
+    height:80px;
+    
+}
+@media (max-width:800px) {
+    .ListaDoCarrinhoDown{
+        padding: 30px 5px;
+    }
+    .imagemDaListaCarrinho{
+        width: 50px;
+    }
+}
