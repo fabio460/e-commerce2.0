@@ -27,6 +27,33 @@ import CarregandoLista from './CarregandoLista';
 import { Button, Fab, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
+
+export default function ListaDoCarrinho2({item}) {
+  const [order, setOrder] = React.useState('asc');
+  const [orderBy, setOrderBy] = React.useState('calories');
+  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [dense, setDense] = React.useState(false);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const atualiza = useSelector(state=>state.AtualizarApi.atualiza)
+  const dispath = useDispatch()
+  const [listCarrinho,setListCarrinho]=React.useState([])
+  const [atualizar,setAtualizar]=React.useState(false)
+
+
+
+
+
+
+
+
+
+//////////////////////
+
+
 function createData(name, calories, nome, valor, quantidade, tamanho) {
   return {
     name,
@@ -38,51 +65,18 @@ function createData(name, calories, nome, valor, quantidade, tamanho) {
   };
 }
 
-let rows = [
+var rows = [
   createData("",
     <CarregandoLista/>,
     <CarregandoLista/>,
-     <CarregandoLista/>,
-      <CarregandoLista/>,
-      <CarregandoLista/>,
-      <CarregandoLista/>
+    <CarregandoLista/>,
+    <CarregandoLista/>,
+    <CarregandoLista/>,
+    <CarregandoLista/>
   ),
 ];
 
-const almentarQuantidade = ()=>{
-  alert()
-}
-const diminuirQuantidade = async(e)=>{
-  const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
-  l.forEact(elem=>{
-    if (elem._id === e) {
-      console.log(elem)
-    }
-  })
-  
-}
-async function getCarrinho() {
-    const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
-    rows = []
-    l.map(item=>{
-        rows.push(
-            createData(
-              <div key={item._id} style={{display:"none"}}>{item._id}</div>,
-              <img src={item.imagem1} className='imagemDaListaCarrinho' />,
-              item.nome,
-              item.valor,
-              <div style={{display:'flex',alignItems:'center'}}>
-                <IconButton onClick={()=> diminuirQuantidade(item._id)} sx={{height:'30px',margin:'0px 5px'}}> - </IconButton>
-                {item.quantidade}
-                <IconButton onClick={almentarQuantidade} sx={{height:'30px', margin:'0px 5px'}}> + </IconButton>
-              </div>,
-              item.tamanho,
-              ),
-        )
-    })    
-  } 
-  
-  getCarrinho()
+
 
 
   const headCells = [
@@ -141,8 +135,6 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -246,17 +238,89 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
+//////////////////////
 
 
-export default function ListaDoCarrinho2({item}) {
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const atualiza = useSelector(state=>state.AtualizarApi.atualiza)
-  const dispath = useDispatch()
+
+
+
+
+
+  const diminuirQuantidade = async(e)=>{
+    try {
+      
+      listCarrinho.filter(elem=>{
+        if (elem.imagem1 === e && parseInt(elem.quantidade) > 1) {
+          
+          const formdata = new FormData()
+          formdata.append('quantidade',parseInt(elem.quantidade)-1)
+          fetch('https://api-e-commerce.vercel.app/atualisacarrinho/'+elem._id,{
+            method:"PUT",
+            body:formdata
+          })
+         // window.location.reload()
+         setTimeout(() => {
+          setAtualizar(!atualizar) 
+         }, 200);
+         
+        }
+      })
+     } catch (error) {
+        console.log(error)
+     }
+  }
+  const  aumentarQuantidade = async(e)=>{
+     try {
+      
+      listCarrinho.filter(elem=>{
+        if (elem.imagem1 === e) {
+          const formdata = new FormData()
+          formdata.append('quantidade',parseInt(elem.quantidade)+1)
+          fetch('https://api-e-commerce.vercel.app/atualisacarrinho/'+elem._id,{
+            method:"PUT",
+            body:formdata
+          })
+          setTimeout(() => {
+            setAtualizar(!atualizar) 
+           }, 200);
+        }
+      })
+     } catch (error) {
+        console.log(error)
+     }
+    
+  }
+  
+  async function getCarrinho() {
+     
+      rows = []
+      listCarrinho.map(item=>{
+          rows.push(
+              createData(
+                <div key={item._id} style={{display:"none"}}>{item._id}</div>,
+                <img src={item.imagem1} className='imagemDaListaCarrinho' />,
+                item.nome,
+                item.valor,
+                <div style={{display:'flex',alignItems:'center'}}>
+                  <div style={{padding:'1px',height:'40px',width:"40px",display:'flex', alignItems:'center',justifyContent:"center"}}>
+                     <IconButton onClick={()=> diminuirQuantidade(item.imagem1)} sx={{height:'40px',width:"40px"}}>
+                       <span style={{marginBottom:'5px',fontSize:'30px'}}> - </span>
+                     </IconButton>
+                  </div>
+                  {item.quantidade}
+                  <div style={{padding:'1px',height:'40px',width:"40px",display:'flex', alignItems:'center',justifyContent:"center"}}>
+                     <IconButton onClick={()=> aumentarQuantidade(item.imagem1)} sx={{height:'40px',width:"40px"}}> 
+                     <span style={{marginBottom:'5px',fontSize:'30px'}}> + </span> 
+                     </IconButton>
+                  </div>
+                </div>,
+                item.tamanho,
+                ),
+          )
+      })    
+    } 
+    
+  getCarrinho()
   const deletarItens = (selected)=>{
 
     selected.map(e=>{
@@ -286,6 +350,15 @@ export default function ListaDoCarrinho2({item}) {
   const EnhancedTableToolbar = (props) => {
     const { numSelected } = props;
     
+    async function getList() {
+      const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
+      setListCarrinho(l)
+    }
+  
+    React.useEffect(()=>{
+      getList()
+    },[atualizar])
+
     return (
       <Toolbar
         sx={{
@@ -341,14 +414,8 @@ export default function ListaDoCarrinho2({item}) {
   EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
   };
-
-
-
-
-   const navigate = useNavigate()
-
-
-
+  
+  const navigate = useNavigate()
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -434,7 +501,6 @@ export default function ListaDoCarrinho2({item}) {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -443,6 +509,7 @@ export default function ListaDoCarrinho2({item}) {
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
+                          onClick={(event) => handleClick(event, row.name)}
                           color="primary"
                           checked={isItemSelected}
                           inputProps={{

@@ -1,27 +1,73 @@
-.ListaDoCarrinho{
+.telaDoCarrinho{
     display: grid;
-    grid-template-rows: 7fr 1fr;
-    height: 100vh;
+    grid-template-columns: 2fr 1fr;
 }
-.ListaDoCarrinhoUp{
-   overflow-y: scroll;
-   
-}
-.ListaDoCarrinhoDown{
-    padding: 40px;
-    display: flex;
-    justify-content: space-between;
-}
-.imagemDaListaCarrinho{
-    width:80px;
-    height:80px;
+.listaContainer{
+    box-shadow: 1px 1px 3px black;
+    padding: 10px;
+    margin: 10px;
+    height: 550px;
+    overflow-y: scroll;
     
 }
+.listaContainer::-webkit-scrollbar{
+    width: 10px;
+}
+.listaContainer::-webkit-scrollbar-thumb{
+    background-color: rgb(172, 255, 172);
+    border-radius: 20px;
+}
+.rowProduto{
+    display: flex;
+}
+table {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    width: 100%;
+}
+td{
+    margin: 10px 0px;
+}
+.listaTabela{
+    display: flex;
+}
+.imagemDaListaCarrinho{
+    width: 50px;
+    height: 60px;
+    margin-right: 10px;
+}
+.telaDoCarrinhoLeft{
+    padding: 20px;
+}
 @media (max-width:800px) {
+    .listaContainer{
+        
+        margin: auto;
+        overflow-x: scroll;
+        width: 340px;
+    }
+    .listaContainer::-webkit-scrollbar{
+        width: 1px;
+    }
+    .listaContainer::-webkit-scrollbar-thumb{
+        background-color: black;
+        border-radius: 10px;
+    }
+    .telaDoCarrinhoLeft{
+        padding: 0px;
+        
+    }
     .ListaDoCarrinhoDown{
-        padding: 30px 5px;
+        padding: 3px 5px;
     }
     .imagemDaListaCarrinho{
-        width: 50px;
+        width: 30px;
+    }
+    .telaDoCarrinho{
+        grid-template-columns: 1fr;
+    }
+    .telaDoCarrinhoRight{
+        display: flex;
+        flex-direction: column;
     }
 }

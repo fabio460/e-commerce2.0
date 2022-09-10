@@ -5,11 +5,13 @@ import ListaReducer from "./ListaReducer";
 import CarrinhoDeComprasReducer from "./CarrinhoDeCompraReducer";
 import ItensSelecionadosDoCarrinho from "./ItensSelecionadosDoCarrinhoReducer";
 import AtualizarApi from "./AtualizarApi";
+import valorTotalReducer from "./valorTotalReducer";
 export default combineReducers({
     IndicePaginacaoReducer,
     SearchReducer,
     ListaReducer,
     CarrinhoDeComprasReducer,
     ItensSelecionadosDoCarrinho,
-    AtualizarApi
+    AtualizarApi,
+    valorTotalReducer
 })
