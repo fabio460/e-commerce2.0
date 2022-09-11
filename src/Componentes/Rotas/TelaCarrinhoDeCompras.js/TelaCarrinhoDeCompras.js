@@ -28,7 +28,7 @@ export default function TelaCarrinhoDeCompras() {
               </h5>
           </div>
            <div className='botoesCarrinho'>
-            <Button variant='outlined' size='small' color='error' onClick={()=> navigate('/')}>Escolher mais produtos</Button>
+              <Button style={{margin:'10px 0px'}} variant='outlined' size='small' color='error' onClick={()=> navigate('/')}>Escolher mais produtos</Button>
               <Button variant='outlined'  size='small' color='success' onClick={finalizarCompra}>Finalizar pedido</Button>
           
            </div>
