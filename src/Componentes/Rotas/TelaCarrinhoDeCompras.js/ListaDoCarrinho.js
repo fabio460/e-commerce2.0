@@ -1,4 +1,4 @@
-import { IconButton } from '@mui/material'
+import { Checkbox, IconButton } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles';
@@ -84,7 +84,7 @@ var rows = [
       aux+=e
     })
     setTudo(aux)
-    console.log(tudo.toFixed(2))
+    
     dispath({
       type:'total',
       payload:{total:tudo.toFixed(2)}
@@ -184,13 +184,27 @@ var rows = [
   
 },[tamanhoDoCarrinho,atualizar])
 
+const [checked, setChecked] = React.useState(false);
+
+const handleChange = (event) => {
+  setChecked(event.target.checked);
+  
+};
+
+
+const getElem = (e)=>{
+  window.querySelectorAll('.PrivateSwitchBase-input').forEach(elem=>{
+    return console.log(elem)
+  })
+ 
+}
   return (
      <div className='listaContainer'>
           <TableContainer component={Paper} >
       <Table sx={{ minWidth: 2 }} aria-label="customized table">
         <TableHead>
           <TableRow sx={{overflowX: 'scroll', maxWidth:'100px'}}>
-            <StyledTableCell>D</StyledTableCell>
+            <StyledTableCell sx={{width:"30px"}}>D</StyledTableCell>
             <StyledTableCell align="left">Produto</StyledTableCell>
             <StyledTableCell align="left">Quantidade</StyledTableCell>
             <StyledTableCell align="left">Sub-total</StyledTableCell>
@@ -201,7 +215,12 @@ var rows = [
           {rows.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+              <Checkbox 
+                  onclick={e=>getElem(checked)}
+                  // checked={checked}
+                   onChange={e=>getElem(e.target)}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
               </StyledTableCell>
               <StyledTableCell align="left">{row.calories}</StyledTableCell>
               <StyledTableCell align="left">{row.fat}</StyledTableCell>

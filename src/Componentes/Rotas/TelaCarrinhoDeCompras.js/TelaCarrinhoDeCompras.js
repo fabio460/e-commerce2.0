@@ -7,6 +7,7 @@ import ListaDoCarrinho2 from './ListaDoCarrinho2.js'
 import './carrinho.css'
 import ListaDoCarrinho4 from './ListaDoCarrinho4.js'
 import { useNavigate } from 'react-router-dom'
+import ListaDoCarrinho3 from './ListaDoCarrinho3.js'
 export default function TelaCarrinhoDeCompras() {
   const [list,setList]=useState([])
   const dispath = useDispatch()
@@ -18,7 +19,7 @@ export default function TelaCarrinhoDeCompras() {
   return (
     <div className='telaDoCarrinho'>
         <div className='telaDoCarrinhoLeft'>
-           <ListaDoCarrinho/>
+           <ListaDoCarrinho3/>
         </div>
         <div className='telaDoCarrinhoRight'>
           <Button variant='outlined' size='small' color='error' onClick={()=> navigate('/')}>Retornar aos pedidos</Button>
