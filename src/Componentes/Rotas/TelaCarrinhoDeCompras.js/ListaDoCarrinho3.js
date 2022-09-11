@@ -92,19 +92,19 @@ const headCells = [
     id: 'fat',
     numeric: true,
     disablePadding: false,
-    label: 'Fat (g)',
+    label: 'Quantidade',
   },
   {
     id: 'carbs',
     numeric: true,
     disablePadding: false,
-    label: 'Carbs (g)',
+    label: '',
   },
   {
     id: 'protein',
     numeric: true,
     disablePadding: false,
-    label: 'Protein (g)',
+    label: 'Sub-total',
   },
 ];
 
@@ -237,7 +237,7 @@ export default function ListaDoCarrinho3() {
             id="tableTitle"
             component="div"
           >
-            Nutrition
+            Meu carrinho
           </Typography>
         )}
   
@@ -497,7 +497,7 @@ EnhancedTableToolbar.propTypes = {
                                 </TableCell>
                                 <TableCell align="left">{row.calories}</TableCell>
                                 <TableCell align="left">{row.fat}</TableCell>
-                                <TableCell align="left">{row.carbs}</TableCell>
+                                <TableCell align="left"></TableCell>
                                 <TableCell align="left">{row.protein}</TableCell>
                                 </TableRow>
                             );

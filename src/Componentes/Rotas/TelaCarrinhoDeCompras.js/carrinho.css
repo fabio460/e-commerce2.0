@@ -6,7 +6,7 @@
     box-shadow: 1px 1px 3px black;
     padding: 10px;
     margin: 10px;
-    height: 450px;
+    height: 650px;
     overflow-y: scroll;
     
 }
@@ -14,7 +14,7 @@
     width: 10px;
 }
 .listaContainer::-webkit-scrollbar-thumb{
-    background-color: rgb(172, 255, 172);
+    background-color: rgb(216, 216, 216);
     border-radius: 20px;
 }
 .rowProduto{
@@ -41,7 +41,7 @@ td{
 }
 @media (max-width:800px) {
     .listaContainer{
-        
+        height: 400px;
         margin: auto;
         overflow-x: scroll;
         width: 340px;
