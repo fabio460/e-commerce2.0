@@ -36,8 +36,20 @@ td{
     height: 60px;
     margin-right: 10px;
 }
+
 .telaDoCarrinhoLeft{
     padding: 20px;
+}
+.telaDoCarrinhoRight{
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.botoesCarrinho{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
 }
 @media (max-width:800px) {
     .listaContainer{

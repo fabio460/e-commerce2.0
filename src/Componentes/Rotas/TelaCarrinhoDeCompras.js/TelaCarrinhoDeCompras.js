@@ -22,11 +22,16 @@ export default function TelaCarrinhoDeCompras() {
            <ListaDoCarrinho3/>
         </div>
         <div className='telaDoCarrinhoRight'>
-          <Button variant='outlined' size='small' color='error' onClick={()=> navigate('/')}>Retornar aos pedidos</Button>
-          <Button variant='outlined'  size='small' color='success' onClick={finalizarCompra}>Finalizar pedido</Button>
-         <h4>
-            valor total a pagar  {total} R$
-         </h4>
+          <div>
+          <h5>
+                valor total a pagar  {total} R$
+              </h5>
+          </div>
+           <div className='botoesCarrinho'>
+            <Button variant='outlined' size='small' color='error' onClick={()=> navigate('/')}>Escolher mais produtos</Button>
+              <Button variant='outlined'  size='small' color='success' onClick={finalizarCompra}>Finalizar pedido</Button>
+          
+           </div>
         </div>
     </div>
   )

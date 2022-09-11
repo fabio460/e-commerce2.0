@@ -403,7 +403,7 @@ EnhancedTableToolbar.propTypes = {
         l.map(e=>{
           rows.push({
             calories:<div style={{display:'flex'}}>
-                <img src={e.imagem1} style={{width:"40px"}}/>
+                <img className='imagemDaListaCarrinho' src={e.imagem1} style={{width:"40px"}}/>
                 <div>
                     <div>{e.nome}</div>
                     <div>{e.valor}</div>
