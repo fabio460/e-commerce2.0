@@ -406,8 +406,8 @@ EnhancedTableToolbar.propTypes = {
                 <img className='imagemDaListaCarrinho' src={e.imagem1} style={{width:"40px"}}/>
                 <div>
                     <div>{e.nome}</div>
-                    <div>{e.valor}</div>
-                    <div>{e.tamanho}</div>
+                    <div>{e.valor} R$</div>
+                    <div>Tam {e.tamanho}</div>
                 </div>
             </div>,
             carbs:e.valor,
