@@ -398,6 +398,10 @@ EnhancedTableToolbar.propTypes = {
 
     const getList = async ()=>{
         const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
+        dispath({
+          type:'listaDoCarrinho',
+          payload:{lista:l}
+        })
         setListCarrinho(l)
         rows = []
         l.map(e=>{

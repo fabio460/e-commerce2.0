@@ -6,6 +6,7 @@ import CarrinhoDeComprasReducer from "./CarrinhoDeCompraReducer";
 import ItensSelecionadosDoCarrinho from "./ItensSelecionadosDoCarrinhoReducer";
 import AtualizarApi from "./AtualizarApi";
 import valorTotalReducer from "./valorTotalReducer";
+import listaCarrinhoDeComprasReducer from "./listaCarrinhoReducer";
 export default combineReducers({
     IndicePaginacaoReducer,
     SearchReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
     CarrinhoDeComprasReducer,
     ItensSelecionadosDoCarrinho,
     AtualizarApi,
-    valorTotalReducer
+    valorTotalReducer,
+    listaCarrinhoDeComprasReducer
 })
