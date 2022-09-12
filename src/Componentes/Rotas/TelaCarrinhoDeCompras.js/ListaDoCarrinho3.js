@@ -407,7 +407,7 @@ EnhancedTableToolbar.propTypes = {
                 <div>
                     <div>{e.nome}</div>
                     <div>Tam {e.tamanho}</div>
-                    <div>{e.valor} R$</div>
+                    <div>R$ {e.valor}</div>
                    
                 </div>
             </div>,
@@ -427,7 +427,7 @@ EnhancedTableToolbar.propTypes = {
             </div>,
             name:e._id,
             protein:  <div className='total' id={(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)}>
-                {(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)} R$
+              R$  {(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)} 
             </div>
         }) 
         })
