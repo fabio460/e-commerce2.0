@@ -362,7 +362,7 @@ EnhancedTableToolbar.propTypes = {
              })
              setTimeout(() => {
                setAtualizar(!atualizar) 
-              }, 200);
+              }, 500);
            }
          })
         } catch (error) {
@@ -444,7 +444,7 @@ EnhancedTableToolbar.propTypes = {
     React.useEffect(()=>{
         getList()
         
-    },[atualizar])  
+    },[atualizar,rows])  
   return (
     <div className='listaContainer'>
             <Box sx={{ width: '100%' }} >

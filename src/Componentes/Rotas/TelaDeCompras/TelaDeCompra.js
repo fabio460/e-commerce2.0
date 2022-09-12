@@ -58,7 +58,7 @@ export default function TelaDeCompra() {
     }
    
     navigate('/carrinhoCompras')
-    window.location.reload()
+   // window.location.reload()
   }
   
   return (
