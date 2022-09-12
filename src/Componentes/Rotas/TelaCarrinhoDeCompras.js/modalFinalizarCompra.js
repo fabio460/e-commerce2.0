@@ -36,7 +36,7 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+          {"Ordem de compra "}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
