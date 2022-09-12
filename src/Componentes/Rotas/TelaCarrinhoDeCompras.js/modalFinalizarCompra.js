@@ -7,12 +7,19 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useSelector } from 'react-redux';
 
-export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total}) {
+export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,setPreenchido,preenchido,setError}) {
   const [open, setOpen] = React.useState(false);
   const carrinho = useSelector(state=>state.listaCarrinhoDeComprasReducer.lista)
   const handleClickOpen = () => {
-    
-    setOpen(true);
+    if(preenchido){
+      setPreenchido(false)
+      setError(true)
+      setOpen(true);
+    }else{
+      setPreenchido(true)
+      setError(false)
+    }
+ 
   };
 
   const handleClose = () => {

@@ -193,8 +193,11 @@ export default function ListaDoCarrinho3() {
           method:"DELETE",
           body:formdata
         })
-        //window.location.reload()
-        setAtualizar(!atualizar)
+        setTimeout(() => {
+          setAtualizar(!atualizar) 
+         }, 200);
+       // window.location.reload()
+      
         // dispath({
         //   type:'atualiza',
         //   payload:{
@@ -337,7 +340,7 @@ EnhancedTableToolbar.propTypes = {
              // window.location.reload()
              setTimeout(() => {
               setAtualizar(!atualizar) 
-             }, 200);
+             }, 500);
              
             }
           })
@@ -441,7 +444,7 @@ EnhancedTableToolbar.propTypes = {
     React.useEffect(()=>{
         getList()
         
-    },[atualizar,rows])  
+    },[atualizar])  
   return (
     <div className='listaContainer'>
             <Box sx={{ width: '100%' }} >

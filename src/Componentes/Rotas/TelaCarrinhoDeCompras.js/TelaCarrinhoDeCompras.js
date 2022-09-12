@@ -118,7 +118,9 @@ export default function TelaCarrinhoDeCompras() {
                 Escolher mais produtos
               </Button>  
               <ModalFinalizarCompra 
-            
+                setPreenchido={setPreenchido}
+                preenchido={preenchido}
+                setError={setError}
                 rua={rua}
                 cidade={cidade}
                 uf={uf}
