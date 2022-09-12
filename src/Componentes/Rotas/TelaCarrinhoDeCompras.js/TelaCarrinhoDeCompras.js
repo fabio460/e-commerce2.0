@@ -9,22 +9,32 @@ import ListaDoCarrinho4 from './ListaDoCarrinho4.js'
 import { useNavigate } from 'react-router-dom'
 import ListaDoCarrinho3 from './ListaDoCarrinho3.js'
 export default function TelaCarrinhoDeCompras() {
-  const [list,setList]=useState([])
+  const [error,setError]=useState(false)
+  const [campo,setCampo]=useState('');
+  const [preenchido,setPreenchido]=useState(false)
   const dispath = useDispatch()
   const total = useSelector(state=>state.valorTotalReducer.total)
   const navigate = useNavigate()
   const finalizarCompra = ()=>{
-    alert('falta ainda implementar')
+    
+    if (!preenchido) {
+      setError(true)
+      
+    }else{
+      setError(false)
+      alert('falta ainda implementar')
+    }
   }
 
-  const [campo,setCampo]=useState('');
+
 
   const buscoEndereco = ()=>{
     fetch(`https://viacep.com.br/ws/${campo}/json/`)
         .then(res=>res.json())
         .then(item=>{
-          console.log(item.uf)
+          
             if (item.uf !== undefined) {
+
               document.querySelector('.rua').innerHTML='Rua: '+item.logradouro;
               document.querySelector('.bairro').innerHTML='Bairro: '+ item.bairro;
               if(item.complemento){
@@ -33,6 +43,7 @@ export default function TelaCarrinhoDeCompras() {
               document.querySelector('.localidade').innerHTML='Cidade: '+item.localidade;
               document.querySelector('.ddd').innerHTML='DDD: '+item.ddd;
               document.querySelector('.uf').innerHTML='UF: '+item.uf;
+              setPreenchido(true)
             }else{
               document.querySelector('.rua').innerHTML='';
               document.querySelector('.bairro').innerHTML='';
@@ -40,6 +51,7 @@ export default function TelaCarrinhoDeCompras() {
               document.querySelector('.localidade').innerHTML='';
               document.querySelector('.ddd').innerHTML='';
               document.querySelector('.uf').innerHTML='';
+              setPreenchido(false)
             }
         })
          .catch(res=>{
@@ -49,6 +61,7 @@ export default function TelaCarrinhoDeCompras() {
           document.querySelector('.localidade').innerHTML='';
           document.querySelector('.ddd').innerHTML='';
           document.querySelector('.uf').innerHTML='';
+          setPreenchido(false)
          });
  
     }
@@ -67,6 +80,7 @@ export default function TelaCarrinhoDeCompras() {
               <div>
                 <Typography sx={{margin:"15px 0px"}}>Endereço de entrega</Typography>
                 <TextField 
+                  error={error}
                   id="demo-helper-text-misaligned-no-helper" 
                   label="Cep" 
                   onChange={(e)=>{setCampo(e.target.value.replace("-",""))}}  
