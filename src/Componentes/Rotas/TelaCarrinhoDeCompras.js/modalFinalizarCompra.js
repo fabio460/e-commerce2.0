@@ -45,7 +45,7 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
                 no valor de R$ {total}.<br/>
              Produtos:    
              {carrinho.map((item,key)=>{
-                return <div>{key} - {item.nome}</div>
+                return <div>{key + 1} - {item.nome}</div>
              })}   
           </DialogContentText>
         </DialogContent>
