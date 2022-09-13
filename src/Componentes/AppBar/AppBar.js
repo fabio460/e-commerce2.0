@@ -72,7 +72,12 @@ export default function AppBarMui() {
   const tamanhoDoCarrinho = useSelector(state=>state.CarrinhoDeComprasReducer.tamanhoDoCarrinho)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  console.log(tamanhoDoCarrinho)
+
+  
+  const irParaLogin = ()=>{
+   navigate('/login')
+   handleMenuClose()
+}
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -107,8 +112,8 @@ export default function AppBarMui() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={irParaLogin}>Logar com Google</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Logar com Email</MenuItem>
     </Menu>
   );
 

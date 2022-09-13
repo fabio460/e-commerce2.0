@@ -19,6 +19,7 @@ import MasculinoAdulto from './Componentes/Rotas/MasculinoAdulto';
 import FemininoAdulto from './Componentes/Rotas/FemininoAdulto';
 import TelaDeCompra from './Componentes/Rotas/TelaDeCompras/TelaDeCompra';
 import TelaCarrinhoDeCompras from './Componentes/Rotas/TelaCarrinhoDeCompras.js/TelaCarrinhoDeCompras';
+import Login from './Componentes/Login/Login';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path='login' element={<Login/>}/>
           <Route path="masculino" element={<Masculino />} />
           <Route path="masculinoAdulto" element={<MasculinoAdulto />} />
           <Route path="feminino" element={<Feminino />} />
