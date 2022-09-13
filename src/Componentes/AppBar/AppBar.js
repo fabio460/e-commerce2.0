@@ -130,7 +130,12 @@ const loginGoogle = ()=>{
       onClose={handleMenuClose}
     >
       {!usuario
-        ? <MenuItem onClick={irParaLogin}>Logar</MenuItem>
+        ? 
+          <div>
+            <MenuItem onClick={irParaLogin}>Logar</MenuItem>
+            <MenuItem onClick={loginGoogle}>Logar com google</MenuItem>
+            
+          </div>
         : 
           <div>
             <MenuItem onClick={deslogar}>Deslogar</MenuItem>
