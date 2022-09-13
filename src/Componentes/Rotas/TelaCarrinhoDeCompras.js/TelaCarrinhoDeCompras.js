@@ -2,10 +2,9 @@ import { Button, Link, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ItemDoCarrinho from './ItemDoCarrinho.js'
-import ListaDoCarrinho from './ListaDoCarrinho.js'
-import ListaDoCarrinho2 from './ListaDoCarrinho2.js'
+
 import './carrinho.css'
-import ListaDoCarrinho4 from './ListaDoCarrinho4.js'
+
 import { useNavigate } from 'react-router-dom'
 import ListaDoCarrinho3 from './ListaDoCarrinho3.js'
 import BotoesParcelas from './botoesParcelas.js'
@@ -126,6 +125,7 @@ export default function TelaCarrinhoDeCompras() {
                 uf={uf}
                 complemento={complemento}  
                 total={total}
+                
               />
            </div>
         </div>

@@ -22,7 +22,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import CarregandoLista from './CarregandoLista';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -178,34 +178,62 @@ export default function ListaDoCarrinho3() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-
+  async function getList(){
+    const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
+    dispath({
+      type:'listaDoCarrinho',
+      payload:{lista:l}
+    })
+    rows = []
+   
+    l.map(e=>{
+      rows.push({
+        calories:<div style={{display:'flex'}}>
+            <img className='imagemDaListaCarrinho' src={e.imagem1} style={{width:"40px"}}/>
+            <div>
+                <div>{e.nome}</div>
+                <div>Tam {e.tamanho}</div>
+                <div>R$ {e.valor}</div>
+               
+            </div>
+        </div>,
+        carbs:e.valor,
+        fat:<div style={{display:'flex',alignItems:'center'}}>
+                <div style={{padding:'1px',height:'40px',width:"40px",display:'flex', alignItems:'center',justifyContent:"center"}}>
+                <IconButton onClick={()=> diminuirQuantidade(e.imagem1)} sx={{height:'40px',width:"40px"}}>
+                    <span style={{marginBottom:'5px',fontSize:'30px'}}> - </span>
+                </IconButton>
+                </div>
+                {e.quantidade}
+                <div style={{padding:'1px',height:'40px',width:"40px",display:'flex', alignItems:'center',justifyContent:"center"}}>
+                <IconButton onClick={()=> aumentarQuantidade(e.imagem1)} sx={{height:'40px',width:"40px"}}> 
+                <span style={{marginBottom:'5px',fontSize:'30px'}}> + </span> 
+                </IconButton>
+                </div>
+        </div>,
+        name:e._id,
+        protein:  <div className='total' id={(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)}>
+          R$  {(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)} 
+        </div>
+    }) 
+    })
+  } 
   
   const deletarItens = (selected)=>{
-    
-    selected.map(e=>{
-      
+  
+    selected.map(e=>{    
       try {
         const formdata = new FormData()
         formdata.append("id",e)
-       
         fetch('https://api-e-commerce.vercel.app/deletarCarrinho/'+e,{
           method:"DELETE",
           body:formdata
         })
         setTimeout(() => {
-          setAtualizar(!atualizar) 
-         }, 200);
-       // window.location.reload()
-      
-        // dispath({
-        //   type:'atualiza',
-        //   payload:{
-        //     atualiza:!atualiza,
-        //   }
-        // })
+          window.location.reload()
+        }, 1000);
       } catch (error) {
-        console.log(error)
+        //console.log(error)
       }
     })
   }
@@ -245,9 +273,9 @@ export default function ListaDoCarrinho3() {
         )}
   
         {numSelected > 0 ? (
-          <div  >
+          <div  onClick={()=> deletarItens(selected)}>
             <IconButton onClick={()=> deletarItens(selected)}>
-              <DeleteIcon />
+              <DeleteIcon  />
             </IconButton>
           </div>
         ) : (
@@ -321,54 +349,47 @@ EnhancedTableToolbar.propTypes = {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
 
-    const [listCarrinho,setListCarrinho]=React.useState([])
-    const [atualizar,setAtualizar]=React.useState(false)
 
 
     const diminuirQuantidade = async(e)=>{
         try {
+          const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
           
-          listCarrinho.filter(elem=>{
+          l.filter(elem=>{
             if (elem.imagem1 === e && parseInt(elem.quantidade) > 1) {
-              
               const formdata = new FormData()
               formdata.append('quantidade',parseInt(elem.quantidade)-1)
               fetch('https://api-e-commerce.vercel.app/atualisacarrinho/'+elem._id,{
                 method:"PUT",
                 body:formdata
-              })
-             // window.location.reload()
-             setTimeout(() => {
-              setAtualizar(!atualizar) 
-             }, 500);
-             
+              })     
+              setTimeout(() => {
+                window.location.reload()
+              }, 1000);
             }
           })
+          
          } catch (error) {
-            console.log(error)
+            //console.log(error)
          }
+        
       }
     
       const  aumentarQuantidade = async(e)=>{
-        try {
-         
-         listCarrinho.filter(elem=>{
-           if (elem.imagem1 === e) {
-             const formdata = new FormData()
-             formdata.append('quantidade',parseInt(elem.quantidade)+1)
-             fetch('https://api-e-commerce.vercel.app/atualisacarrinho/'+elem._id,{
-               method:"PUT",
-               body:formdata
-             })
-             setTimeout(() => {
-               setAtualizar(!atualizar) 
-              }, 500);
-           }
-         })
-        } catch (error) {
-           console.log(error)
-        }
-       
+        const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
+        l.filter(elem=>{
+          if (elem.imagem1 === e) {
+            const formdata = new FormData()
+            formdata.append('quantidade',parseInt(elem.quantidade)+1)
+            fetch('https://api-e-commerce.vercel.app/atualisacarrinho/'+elem._id,{
+              method:"PUT",
+              body:formdata
+            }) 
+            setTimeout(() => {
+              window.location.reload()
+            }, 1000);
+          }
+        })
      }
 
 
@@ -397,54 +418,9 @@ EnhancedTableToolbar.propTypes = {
        })
      }, 500);
 
-
-
-    const getList = async ()=>{
-        const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
-        dispath({
-          type:'listaDoCarrinho',
-          payload:{lista:l}
-        })
-        setListCarrinho(l)
-        rows = []
-        l.map(e=>{
-          rows.push({
-            calories:<div style={{display:'flex'}}>
-                <img className='imagemDaListaCarrinho' src={e.imagem1} style={{width:"40px"}}/>
-                <div>
-                    <div>{e.nome}</div>
-                    <div>Tam {e.tamanho}</div>
-                    <div>R$ {e.valor}</div>
-                   
-                </div>
-            </div>,
-            carbs:e.valor,
-            fat:<div style={{display:'flex',alignItems:'center'}}>
-                    <div style={{padding:'1px',height:'40px',width:"40px",display:'flex', alignItems:'center',justifyContent:"center"}}>
-                    <IconButton onClick={()=> diminuirQuantidade(e.imagem1)} sx={{height:'40px',width:"40px"}}>
-                        <span style={{marginBottom:'5px',fontSize:'30px'}}> - </span>
-                    </IconButton>
-                    </div>
-                    {e.quantidade}
-                    <div style={{padding:'1px',height:'40px',width:"40px",display:'flex', alignItems:'center',justifyContent:"center"}}>
-                    <IconButton onClick={()=> aumentarQuantidade(e.imagem1)} sx={{height:'40px',width:"40px"}}> 
-                    <span style={{marginBottom:'5px',fontSize:'30px'}}> + </span> 
-                    </IconButton>
-                    </div>
-            </div>,
-            name:e._id,
-            protein:  <div className='total' id={(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)}>
-              R$  {(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)} 
-            </div>
-        }) 
-        })
-      } 
- 
-  
     React.useEffect(()=>{
-        getList()
-        
-    },[atualizar,rows])  
+      getList()
+    },[])  
   return (
     <div className='listaContainer'>
             <Box sx={{ width: '100%' }} >

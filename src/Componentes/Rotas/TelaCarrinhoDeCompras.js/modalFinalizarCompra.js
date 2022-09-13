@@ -10,14 +10,15 @@ import { useSelector } from 'react-redux';
 export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,setPreenchido,preenchido,setError}) {
   const [open, setOpen] = React.useState(false);
   const carrinho = useSelector(state=>state.listaCarrinhoDeComprasReducer.lista)
+  const [habilitar,setHabilitar]=React.useState(true)
   const handleClickOpen = () => {
     if(preenchido){
       setPreenchido(false)
-      setError(true)
+      setError(false)
       setOpen(true);
     }else{
       setPreenchido(true)
-      setError(false)
+      setError(true)
     }
  
   };
@@ -26,9 +27,17 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
     setOpen(false);
   };
 
+  React.useEffect(()=>{
+    if(total > 0){
+      setHabilitar(false)
+    }
+  },[total])
+
   return (
     <div>
-      <Button variant='outlined'  size='small' color='success' fullWidth onClick={handleClickOpen}>Finalizar pedido</Button>
+      <Button disabled={habilitar} variant='outlined'  size='small' color='success' fullWidth onClick={handleClickOpen}>
+         Finalizar pedido
+      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
