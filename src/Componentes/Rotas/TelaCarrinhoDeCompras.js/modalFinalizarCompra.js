@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useSelector } from 'react-redux';
 
-export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,setPreenchido,preenchido,setError,numero}) {
+export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,setPreenchido,preenchido,setError,numero,setNumero}) {
   const [open, setOpen] = React.useState(false);
   const carrinho = useSelector(state=>state.listaCarrinhoDeComprasReducer.lista)
   const [habilitar,setHabilitar]=React.useState(true)
@@ -16,15 +16,18 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
       setPreenchido(false)
       setError(false)
       setOpen(true);
+      
     }else{
       setPreenchido(true)
       setError(true)
     }
- 
+    
   };
 
   const handleClose = () => {
+    setNumero('')
     setOpen(false);
+
   };
 
   React.useEffect(()=>{

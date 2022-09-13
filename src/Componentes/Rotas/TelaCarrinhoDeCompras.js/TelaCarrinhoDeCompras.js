@@ -112,7 +112,14 @@ export default function TelaCarrinhoDeCompras() {
                   <div className='ddd'></div>
                   <div className='uf'></div>
                   {preenchido && <div>
-                    <TextField label='Numero' value={numero} sx={{margin:"10px 0px"}} size='small' onChange={e=>setNumero(e.target.value)}/>  
+                    <TextField 
+                      label='Numero'
+                      value={numero} 
+                      sx={{margin:"10px 0px"}}
+                      size='small' 
+                      onChange={e=>setNumero(e.target.value)}
+
+                  />  
                   </div>}
               </div>
               
@@ -131,6 +138,7 @@ export default function TelaCarrinhoDeCompras() {
                 complemento={complemento}  
                 total={total}
                 numero={numero}
+                setNumero={setNumero}
               />
            </div>
         </div>

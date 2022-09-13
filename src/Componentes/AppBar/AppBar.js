@@ -138,9 +138,8 @@ export default function AppBarMui() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={()=>navigate('/carrinhoCompras')}>
         <IconButton
-        onClick={()=>navigate('/carrinhoCompras')}
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
@@ -149,7 +148,7 @@ export default function AppBarMui() {
             <ShoppingCart />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Carrinho</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton

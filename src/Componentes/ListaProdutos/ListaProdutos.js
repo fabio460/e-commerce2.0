@@ -16,7 +16,11 @@ export default function ListaProdutos() {
       localStorage.setItem('lista',JSON.stringify(p))
       localStorage.setItem('tamanhoDaLista',p.length)
       p.map(e=>{
-        if (e.nome.includes(busca)) {
+        let texto = busca
+       
+        let maiusculo = texto[0].toUpperCase() + texto.substring(1);
+        let minusculo = texto[0].toLowerCase() + texto.substring(1);
+        if (e.nome.includes(maiusculo) || e.nome.includes(minusculo)) {
           aux.push(e)
         }
       })
