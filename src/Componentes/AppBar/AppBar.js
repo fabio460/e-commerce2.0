@@ -78,7 +78,7 @@ export default function AppBarMui() {
   React.useEffect(()=>{
     if (usuarioStr) {
       setUsuario(JSON.parse(usuarioStr))
-      
+     
     }
   },[])
   
@@ -286,6 +286,9 @@ const loginGoogle = ()=>{
           
         </Toolbar>
       {/* </AppBar> */}
+      {/* <div style={{color:'black'}}>
+        <img src={usuario.avatar}/>
+      </div> */}
       {renderMobileMenu}
       {renderMenu}
     </Box>

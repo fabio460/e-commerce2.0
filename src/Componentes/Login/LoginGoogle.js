@@ -4,13 +4,14 @@ import './Login.css'
 import { addDoc, collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import db from './fireBaseConfig';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 export default function LoginGoogle() {
   const auth = getAuth();
   //const [signInWithFacebook, user, loading, error] = useSignInWithFacebook(auth);
   const provider = new GoogleAuthProvider();
   //const providerFaceBook = new FacebookAuthProvider()
   const [numUsuer,setNumUser]=useState(1)
- 
+  const navigate = useNavigate()
   
   useEffect(()=>{
     const colRef2 = query(collection(db, "user"),orderBy("uid"))
@@ -24,6 +25,7 @@ export default function LoginGoogle() {
           setNumUser(defined.uid + 1)
         }
     })
+    
   },[])
 
   async function cadastrarUsuario(email,nome,senha,avatar,uid,data) {
@@ -49,7 +51,23 @@ export default function LoginGoogle() {
                   console.log(auth.currentUser.email+" cadastrado com sucesso")    
           }        
       })
-  
+      let avatar = auth.currentUser.photoURL
+      let email = auth.currentUser.email
+      let nome = auth.currentUser.displayName
+
+      let usuarioFireBase = {
+        id:null,
+        cidade:null,
+        idade:null,
+        profissao:null,
+        token:'token',
+        avatar:avatar,
+        userName:nome,
+        email:email
+      }
+      
+      localStorage.setItem('usuarioLogado',JSON.stringify(usuarioFireBase))
+      navigate('/')
     }).catch((error) => {
   
     });
@@ -73,10 +91,12 @@ export default function LoginGoogle() {
   //   });
   // }
   return (
-    <div className='loginContainer'>
-      <h1>Login</h1>
-    
-      <Button variant="contained" onClick={logar}>Logar com Google</Button>
+    <div className='loginContainerGoogle'>
+      <div style={{textAlign:'center'}}>
+          <h1>Login</h1>
+          <Button variant="contained" onClick={logar}>Logar com Google</Button>
+      </div>
+
       {/* <Button variant="contained" onClick={logarFaceBook}>Logar com logarFaceBook</Button> */}
     </div>
   )

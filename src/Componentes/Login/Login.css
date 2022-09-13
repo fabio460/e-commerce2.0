@@ -31,6 +31,12 @@
     height: 200px;
     border: solid 1px black;
 }
+.loginContainerGoogle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
 @media (max-width:500px) {
     .camposForm{
         width: 97%;
