@@ -15,12 +15,14 @@ export default function ListaProdutos() {
       setList(p)
       localStorage.setItem('lista',JSON.stringify(p))
       localStorage.setItem('tamanhoDaLista',p.length)
+      let texto = busca
+      if (!texto) {
+        setDisplay('none')
+      }
+      let maiusculo = texto[0].toUpperCase() + texto.substring(1);
+      let minusculo = texto[0].toLowerCase() + texto.substring(1);
       p.map(e=>{
-        let texto = busca
-       
-        let maiusculo = texto[0].toUpperCase() + texto.substring(1);
-        let minusculo = texto[0].toLowerCase() + texto.substring(1);
-        if (e.nome.includes(maiusculo) || e.nome.includes(minusculo)) {
+        if (e.nome.includes(minusculo) || e.nome.includes(maiusculo)) {
           aux.push(e)
         }
       })
