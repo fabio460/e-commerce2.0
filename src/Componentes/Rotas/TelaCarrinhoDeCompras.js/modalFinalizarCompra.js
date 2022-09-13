@@ -6,6 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useSelector } from 'react-redux';
+import BtnMensagemDeErro from './BtnMensagemDeErro';
 
 export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,setPreenchido,preenchido,setError,numero,setNumero}) {
   const [open, setOpen] = React.useState(false);
@@ -38,9 +39,11 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
 
   return (
     <div>
-      <Button disabled={habilitar} variant='outlined'  size='small' color='success' fullWidth onClick={handleClickOpen}>
+      {/* <Button disabled={habilitar} variant='outlined'  size='small' color='success' fullWidth onClick={handleClickOpen}>
          Finalizar pedido
-      </Button>
+         
+      </Button> */}
+      <BtnMensagemDeErro habilitar={habilitar} preenchido={preenchido} handleClickOpen={handleClickOpen} />
       <Dialog
         open={open}
         onClose={handleClose}

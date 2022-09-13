@@ -3,7 +3,14 @@
     margin-top: 30px;
 }
 
-
+footer{
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(242, 242, 242);
+    
+}
 @media (max-width:800px) {
     .carousel-item img{
         height: 200px;

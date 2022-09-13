@@ -17,6 +17,7 @@ import Caroulsel from './Caroulsel';
 import AppBarBootstrap from '../AppBar/AppBarBootstrap';
 import BtnFlutuante from './btnFlutuante';
 import { useDispatch } from 'react-redux';
+import { Link, Typography } from '@mui/material';
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -85,6 +86,20 @@ export default function Home(props) {
             </div>      
           </Box> 
         </div>
+        <footer>
+           <Typography>
+              <div>Confira meus projetos no meu GitHub </div>
+              <Link href='https://github.com/fabio460' sx={{cursor:'pointer'}}>https://github.com/fabio460</Link>
+           </Typography>
+           <Typography>
+              <div> Confira meus projetos no meu Portifolio </div>
+              <Link href='https://fabio460.github.io/Portifolio/' sx={{cursor:'pointer'}}>https://fabio460.github.io/Portifolio/</Link>
+           </Typography>
+           <Typography>
+              <div> Confira meu linkedin </div>
+              <Link href='https://www.linkedin.com/in/fabio-oliveira-b2589163/' sx={{cursor:'pointer'}}>https://www.linkedin.com/in/fabio-oliveira-b2589163/</Link>
+           </Typography>
+        </footer>
       </div>
     </React.Fragment>
   );
