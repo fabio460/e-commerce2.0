@@ -1,0 +1,40 @@
+.camposForm{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 30%;
+    
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+.ContainerForm{
+    background-color: rgb(127, 178, 255);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#textoCadrastese{
+    color: red;
+    cursor: pointer;
+}
+#textoCadrastese:hover{
+    color: brown;
+}
+.text_cadastrar{
+    margin: 13px 0px;
+    
+}
+.uploadImagemContainer{
+    width: 350px;
+    height: 200px;
+    border: solid 1px black;
+}
+@media (max-width:500px) {
+    .camposForm{
+        width: 97%;
+        margin:20% auto;
+        margin: 8px;
+    }
+}

@@ -1,83 +1,134 @@
 import React, { useEffect, useState } from 'react'
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import './Login.css'
-import { addDoc, collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
-import db from './fireBaseConfig';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {useNavigate} from 'react-router-dom'
+import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 export default function Login() {
-  const auth = getAuth();
-  //const [signInWithFacebook, user, loading, error] = useSignInWithFacebook(auth);
-  const provider = new GoogleAuthProvider();
-  //const providerFaceBook = new FacebookAuthProvider()
-  const [numUsuer,setNumUser]=useState(1)
- 
-  
-  useEffect(()=>{
-    const colRef2 = query(collection(db, "user"),orderBy("uid"))
-    onSnapshot(colRef2, (snapshot) => {
-      let aux = []
-        snapshot.docs.forEach((doc) => {
-            aux.push(doc.data())  
-        })
-        let defined = aux[aux.length - 1]
-        if (defined !== undefined) {
-          setNumUser(defined.uid + 1)
-        }
-    })
-  },[])
+  let navigate = useNavigate();
+  const link = "https://postagem-back.vercel.app/"
+  const dispath = useDispatch()
+    const [values, setValues] = React.useState({
+        amount: '',
+        password: '',
+        weight: '',
+        weightRange: '',
+        showPassword: false,
+      });
 
-  async function cadastrarUsuario(email,nome,senha,avatar,uid,data) {
-    addDoc(collection(db, "user"), {
-        email,
-        nome,
-        senha,
-        avatar,
-        uid,
-        data
-        });
-    }
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
 
-  const logar = ()=>{
-    signInWithPopup(auth, provider)
-    .then(async(result) => {
-      const colRef = query(collection(db, "user"),where("email", "==", auth.currentUser.email))
-      onSnapshot(colRef, (snapshot) => {
-          let tamanhoArray = snapshot._snapshot.docChanges.length
-          if (tamanhoArray === 0) {
-                  cadastrarUsuario(auth.currentUser.email,auth.currentUser.displayName,"",auth.currentUser.photoURL,numUsuer,new Date())
-                  console.log(auth.currentUser.email+" cadastrado com sucesso")    
-          }        
-      })
-  
-    }).catch((error) => {
-  
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
     });
-  }
+  };
 
-  // const logarFaceBook = ()=>{
-  //   signInWithPopup(auth, providerFaceBook)
-  //   .then((result) => {
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+  const [email,setEmail] = useState('');
+  const handleChangeEmail = (e)=>{
+    setEmail(e.target.value)
+  }
+  const [errorDesenha,setErroDeSenha] =useState(false)
+  const [ erroDeEmail,setErroDeEmail] = useState(false)
+
+  const Logar =async ()=>{
+    const formdata = new FormData()
+    formdata.append('email',email)
+    formdata.append('senha',values.password)
+    let usuario =await fetch(link+"jwt",{
+       method:"POST",
+       body:formdata
+    }).then(res=>res.json())
+  
     
-  //     const colRef = query(collection(db, "user"),where("email", "==", auth.currentUser.email))
-  //     onSnapshot(colRef, (snapshot) => {
-  //         let tamanhoArray = snapshot._snapshot.docChanges.length
-  //         if (tamanhoArray === 0) {
-  //                 cadastrarUsuario(auth.currentUser.email,auth.currentUser.displayName,"",auth.currentUser.photoURL,numUsuer,new Date())
-  //                 console.log(auth.currentUser.email+" cadastrado com sucesso")    
-  //         }        
-  //     })
-      
-  //   }).catch((error) => {
-  //     console.log(error)
-  //   });
-  // }
+     if(email !== usuario.email){
+         setErroDeEmail(true)
+         
+     }else{
+         setErroDeEmail(false)
+         if(usuario.token === ""){
+             setErroDeSenha(true)
+        
+         }else{
+             setErroDeSenha(false)
+             dispath({
+              type:"logado",
+              payload:{logado:"true"}
+             })
+                 let usuarioStr = JSON.stringify(usuario);
+                 localStorage.setItem('usuarioLogado',usuarioStr)
+                 localStorage.setItem('logado','true')
+                 navigate('/')
+         }
+     }
+
+    
+  }
+  let logado = useSelector(state=>state.loginReducer.logado)
+  useEffect(()=>{
+    
+    //  if(logado==="true"){
+    //      navigate("home");
+    //  }
+     
+  },[logado,navigate])
+  
+ const cadastrar = ()=>{
+  navigate("/cadastrar");
+ }
   return (
-    <div className='loginContainer'>
-      <h1>Login</h1>
-    
-      <Button variant="contained" onClick={logar}>Logar com Google</Button>
-      {/* <Button variant="contained" onClick={logarFaceBook}>Logar com logarFaceBook</Button> */}
+  <div className='ContainerForm'>  
+    <div className='camposForm'>
+            <h1>Login</h1>
+            <TextField
+                id="outlined-name"
+                label="Email"
+                value={email}
+                error={erroDeEmail}
+                onChange={handleChangeEmail}
+                sx={{ m: 1, width: '100%' }}
+            />      
+            <FormControl sx={{ m: 1, width: '100%' }} variant="outlined" >
+                <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+                <OutlinedInput
+                    id="outlined-adornment-password"
+                    error = {errorDesenha}
+                    type={values.showPassword ? 'text' : 'password'}
+                    value={values.password}
+                    onChange={handleChange('password')}
+                    endAdornment={
+                    <InputAdornment position="end">
+                        <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                        >
+                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                    </InputAdornment>
+                    }
+                    label="Password"
+                />
+            </FormControl>
+            <div className='text_cadastrar'>Não é cadastrado? <span onClick={cadastrar} id='textoCadrastese'>Cadastre-se</span></div>
+            <Button variant="contained" sx={{width:"100%"}} onClick={Logar}>Logar</Button>
     </div>
+  </div>  
   )
 }
