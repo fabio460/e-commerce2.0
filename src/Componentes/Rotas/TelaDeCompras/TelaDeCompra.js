@@ -11,8 +11,7 @@ export default function TelaDeCompra() {
   const produto = JSON.parse(localStorage.getItem('produto'))
   const navigate = useNavigate()
   const [tamanho,setTamanho]=React.useState(38)
-  const [quantidade,setQuantidade]=React.useState(1)
-  const [existe,setExiste]=React.useState('não')
+  const [quantidade]=React.useState(1)
   const acionarCarrinho = async()=>{
     let aux = []
     
@@ -31,47 +30,47 @@ export default function TelaDeCompra() {
           body:formdata
         })  
       }else{
-        l.filter(elem=>{      
-          if(elem.imagem1 === produto.imagem1 && elem.tamanho.toString() === tamanho.toString()) {
-                const formdata = new FormData()
-                formdata.append('quantidade',parseInt(elem.quantidade)+1)
-                fetch('https://api-e-commerce.vercel.app/atualisacarrinho/'+elem._id,{
-                  method:"PUT",
-                  body:formdata
-                }) 
-                setTimeout(() => {
-                  window.location.reload()
-                }, 1000);
-  
-          }else{
-                const formdata = new FormData()
-                formdata.append("nome",produto.nome)
-                formdata.append("imagem1",produto.imagem1)
-                formdata.append("valor",produto.valor)
-                formdata.append("quantidade",quantidade)
-                formdata.append("tamanho",tamanho)
-                fetch('https://api-e-commerce.vercel.app/postarCarrinho',{
-                  method:"POST",
-                  body:formdata
-                })  
-          }
-        })  
-      }
 
-  
+        const obj = l.find(elem=>{
+          if (elem.imagem1 === produto.imagem1 && elem.tamanho.toString() === tamanho.toString()) {
+            return elem
+          }
+        })
+
+        if (obj) {
+          const formdata = new FormData()
+          formdata.append('quantidade',parseInt(obj.quantidade)+1)
+          fetch('https://api-e-commerce.vercel.app/atualisacarrinho/'+obj._id,{
+            method:"PUT",
+            body:formdata
+          }) 
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000);  
+        }else{
+          const formdata = new FormData()
+          formdata.append("nome",produto.nome)
+          formdata.append("imagem1",produto.imagem1)
+          formdata.append("valor",produto.valor)
+          formdata.append("quantidade",quantidade)
+          formdata.append("tamanho",tamanho)
+          fetch('https://api-e-commerce.vercel.app/postarCarrinho',{
+            method:"POST",
+            body:formdata
+          })  
+        }
+      }
     } catch (error) {
-      console.log(error)
+      //console.log(error)
     }
    
     navigate('/carrinhoCompras')
-   // window.location.reload()
   }
   
   return (
     <div>
         <AppBarBootstrap/>
         <div className='container telaDeCompras'>
-          {/* {JSON.stringify(produto)} */}
           <div className='telaDeComprasLeft'>
               <img src={produto.imagem1}/>
           </div>

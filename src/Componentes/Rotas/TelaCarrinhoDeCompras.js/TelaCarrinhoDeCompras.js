@@ -18,6 +18,7 @@ export default function TelaCarrinhoDeCompras() {
   const [bairro,setBairro]=useState()
   const [cidade,setCidade]=useState()
   const [uf,setUf]=useState()
+  const [numero,setNumero] = useState()
   const [complemento,setComplemento]=useState()
   const total = useSelector(state=>state.valorTotalReducer.total)
   const navigate = useNavigate()
@@ -41,7 +42,8 @@ export default function TelaCarrinhoDeCompras() {
           
             if (item.uf !== undefined) {
               setRua(item.logradouro)
-              setComplemento(item.localidade)
+              setComplemento(item.complemento)
+              setCidade(item.localidade)
               setBairro(item.bairro)
               setUf(item.uf)
               document.querySelector('.rua').innerHTML='Rua: '+item.logradouro;
@@ -109,6 +111,9 @@ export default function TelaCarrinhoDeCompras() {
                   <div className='localidade'></div>
                   <div className='ddd'></div>
                   <div className='uf'></div>
+                  {preenchido && <div>
+                    <TextField label='Numero' value={numero} sx={{margin:"10px 0px"}} size='small' onChange={e=>setNumero(e.target.value)}/>  
+                  </div>}
               </div>
               
           </div>
@@ -125,7 +130,7 @@ export default function TelaCarrinhoDeCompras() {
                 uf={uf}
                 complemento={complemento}  
                 total={total}
-                
+                numero={numero}
               />
            </div>
         </div>

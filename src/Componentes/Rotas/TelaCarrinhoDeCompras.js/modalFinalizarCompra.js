@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useSelector } from 'react-redux';
 
-export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,setPreenchido,preenchido,setError}) {
+export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,setPreenchido,preenchido,setError,numero}) {
   const [open, setOpen] = React.useState(false);
   const carrinho = useSelector(state=>state.listaCarrinhoDeComprasReducer.lista)
   const [habilitar,setHabilitar]=React.useState(true)
@@ -50,8 +50,9 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
              Emitida uma ordem de compra no endereço: 
-                {rua} - {cidade}/{uf}, {complemento}, 
-                no valor de R$ {total}.<br/>
+                {rua}, {numero? "numero "+numero : "S/N"} - {cidade}/{uf}, {complemento && complemento+". "}
+                <br/> 
+                Total a pagar R$ {total}.<br/>
              Produtos:    
              {carrinho.map((item,key)=>{
                 return <div>{key + 1} - {item.nome}</div>
