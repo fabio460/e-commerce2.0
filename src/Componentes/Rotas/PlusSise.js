@@ -209,11 +209,10 @@ export default function PlusSise() {
               })}
       </div>
       <div className='listaRotas'>
-        
-          <div className='listaProdutos'>
-              <div style={{display:Display}} >
+            <div style={{display:Display}} >
                   <CardsCarregando/>
-              </div>
+            </div>
+          <div className='listaProdutos'>
               {list.map((item,key)=>{
                 return (key > inicio && key <= fim) && <Cards item={item} key={key}/>
               })}
