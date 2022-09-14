@@ -88,16 +88,13 @@ export default function Home(props) {
         </div>
         <footer>
            <Typography>
-              <div>Confira meus projetos no meu GitHub </div>
-              <Link href='https://github.com/fabio460' sx={{cursor:'pointer'}}>https://github.com/fabio460</Link>
+              <Link href='https://github.com/fabio460' sx={{cursor:'pointer'}}>Github</Link>
            </Typography>
            <Typography>
-              <div> Confira meus projetos no meu Portifolio </div>
-              <Link href='https://fabio460.github.io/Portifolio/' sx={{cursor:'pointer'}}>https://fabio460.github.io/Portifolio/</Link>
+              <Link href='https://fabio460.github.io/Portifolio/' sx={{cursor:'pointer'}}>Portifolio</Link>
            </Typography>
            <Typography>
-              <div> Confira meu linkedin </div>
-              <Link href='https://www.linkedin.com/in/fabio-oliveira-b2589163/' sx={{cursor:'pointer'}}>https://www.linkedin.com/in/fabio-oliveira-b2589163/</Link>
+              <Link href='https://www.linkedin.com/in/fabio-oliveira-b2589163/' sx={{cursor:'pointer'}}>Linkedin</Link>
            </Typography>
         </footer>
       </div>
