@@ -80,6 +80,7 @@ export default function TelaCarrinhoDeCompras() {
     }
 
     buscoEndereco()
+
   return (
     <div className='telaDoCarrinho'>
         <div className='telaDoCarrinhoLeft'>

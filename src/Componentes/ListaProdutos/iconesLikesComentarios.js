@@ -7,10 +7,20 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-export default function IconesLikesComentarios() {
+export default function IconesLikesComentarios({item}) {
+  const [checked, setChecked] = React.useState(false);
+ 
+  
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+    
+  };
   return (
     <div>
-      <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+      <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} 
+         checked={checked}
+         onChange={handleChange}
+      />
       <Checkbox
         {...label}
         icon={<BookmarkBorderIcon />}

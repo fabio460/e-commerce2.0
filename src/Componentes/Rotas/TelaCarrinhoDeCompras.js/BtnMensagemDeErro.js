@@ -12,6 +12,7 @@ export default function BtnMensagemDeErro({habilitar,handleClickOpen,preenchido}
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
+   
     if(!preenchido){
       setOpen(true);
     }
@@ -29,7 +30,7 @@ export default function BtnMensagemDeErro({habilitar,handleClickOpen,preenchido}
   return (
     <Stack spacing={2} sx={{ width: '100%' }}>
       <Button variant="outlined" onClick={handleClick} disabled={habilitar}>
-        mensagem de erro
+        Finalizar pedido
       </Button>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>

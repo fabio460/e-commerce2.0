@@ -7,7 +7,7 @@ import { CardActionArea } from '@mui/material';
 import IconesLikesComentarios from './iconesLikesComentarios';
 import { useNavigate } from 'react-router-dom';
 
-export default function Cards({item}) {
+export default function Cards({item,key}) {
   const cardStyle ={ 
     width: '100%',
     margin:'auto',
@@ -43,7 +43,7 @@ export default function Cards({item}) {
         />
         <CardContent >
           <Typography gutterBottom variant="h5" component="div" color='red'>
-            {item.valor}
+            R$ {item.valor}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {item.nome}
@@ -52,7 +52,7 @@ export default function Cards({item}) {
 
       </CardActionArea>
       <Typography sx={{display:'flex',justifyContent:'flex-end'}}>
-          <IconesLikesComentarios/>
+          <IconesLikesComentarios item={item}/>
       </Typography>
     </Card>
   );

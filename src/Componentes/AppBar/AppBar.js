@@ -14,6 +14,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Avatar, Fab } from '@mui/material';
 import Paper from '@mui/material/Paper';
@@ -22,7 +23,7 @@ import Divider from '@mui/material/Divider';
 
 
 import DirectionsIcon from '@mui/icons-material/Directions';
-import { ShoppingCart } from '@mui/icons-material';
+import { LinkedIn, ShoppingCart } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'; 
 
@@ -240,13 +241,20 @@ const loginGoogle = ()=>{
   
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton sx={{margin:"0px 10px"}} size="large" aria-label="show 4 new mails" color="default">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
+            <IconButton 
+                 href='https://github.com/fabio460'
+                 sx={{marginLeft:"5px"}} size="large" aria-label="show 4 new mails" color="default">
+                <GitHubIcon />
             </IconButton>
+            <IconButton 
+                href='https://www.linkedin.com/in/fabio-oliveira-b2589163/'
+                sx={{margin:""}} size="large" aria-label="show 4 new mails" color="default"  
+             >
+               <LinkedIn/>
+            </IconButton>
+            
             <IconButton
-              sx={{margin:"0px 10px 0px 0px"}}
+              sx={{margin:""}}
               size="large"
               aria-label="show 17 new notifications"
               color="default"
@@ -263,6 +271,7 @@ const loginGoogle = ()=>{
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="default"
+              sx={{marginLeft:"5px"}}
             >
               <Avatar 
                  sx={{width:'38px',height:'38px'}} src={usuario ? usuario.avatar : ""}

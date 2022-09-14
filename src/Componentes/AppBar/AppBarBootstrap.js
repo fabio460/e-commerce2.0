@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import AppBarMui from './AppBar'
+
 import AppBar from './AppBar'
 import './AppBar.css'
 export default function AppBarBootstrap() {
@@ -29,7 +30,7 @@ export default function AppBarBootstrap() {
     <div >
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <div class="container-fluid container" style={{padding:"0% 3%"}}>
-            <a class="navbar-brand" href="/">Logo</a>
+            <a class="navbar-brand" href="/">Loja de roupas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
