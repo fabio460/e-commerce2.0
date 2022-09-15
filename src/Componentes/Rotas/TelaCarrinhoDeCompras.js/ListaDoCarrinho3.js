@@ -23,6 +23,11 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import CarregandoLista from './CarregandoLista';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '@mui/material';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { useNavigate } from 'react-router-dom';
+import { ArrowBackIosNew, Home } from '@mui/icons-material';
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -178,6 +183,7 @@ export default function ListaDoCarrinho3() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const navigate = useNavigate()
   async function getList(){
     const l =await fetch('https://api-e-commerce.vercel.app/listarCarrinho').then(r=>r.json())
     dispath({
@@ -263,13 +269,24 @@ export default function ListaDoCarrinho3() {
           </Typography>
         ) : (
           <Typography
-            sx={{ flex: '1 1 100%' }}
+            sx={{ flex: '1 1 100%',display:'flex',justifyContent:"space-between" }}
             variant="h6"
             id="tableTitle"
             component="div"
           >
-            Meu carrinho
+ 
+            <div> Meu carrinho</div>
+            <ToggleButtonGroup>
+              <ToggleButton sx={{marginRight:'5px'}} onClick={()=>navigate('/')}>
+                <Home color='success'/>
+              </ToggleButton>
+              <ToggleButton onClick={()=>navigate('/telaDeCompras')}>
+                <ArrowBackIosNew color='primary'/>
+              </ToggleButton>
+            </ToggleButtonGroup>
+            {/* <div onClick={()=>navigate('/telaDeCompras')}>Voltar</div> */}
           </Typography>
+  
         )}
   
         {numSelected > 0 ? (
