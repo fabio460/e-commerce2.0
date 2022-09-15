@@ -213,8 +213,8 @@ export default function ListaDoCarrinho3() {
         </div>,
         name:e._id,
         protein:  <div className='total' id={(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)}>
-          R$  {(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)} 
-        </div>
+                  R$  {(toFloat(e.valor,e.quantidade)*parseInt(e.quantidade)).toFixed(2)} 
+                </div>
     }) 
     })
   } 
@@ -273,13 +273,13 @@ export default function ListaDoCarrinho3() {
         )}
   
         {numSelected > 0 ? (
-          <div  onClick={()=> deletarItens(selected)}>
+          <Tooltip title="Deletar"  onClick={()=> deletarItens(selected)}>
             <IconButton onClick={()=> deletarItens(selected)}>
               <DeleteIcon  />
             </IconButton>
-          </div>
+          </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
+          <Tooltip title="Filtrar lista">
             <IconButton>
               <FilterListIcon />
             </IconButton>
@@ -499,6 +499,7 @@ EnhancedTableToolbar.propTypes = {
                     </Table>
                     </TableContainer>
                     <TablePagination
+                    labelRowsPerPage='Colunas por pagina'
                     rowsPerPageOptions={[5, 10, 25]}
                     component="div"
                     count={rows.length}
