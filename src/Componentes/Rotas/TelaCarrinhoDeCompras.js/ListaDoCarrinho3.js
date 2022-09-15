@@ -510,7 +510,7 @@ EnhancedTableToolbar.propTypes = {
                 </Paper>
                 <FormControlLabel
                     control={<Switch checked={dense} onChange={handleChangeDense} />}
-                    label="Dense padding"
+                    label="Lista densa"
                 />
             </Box>
     </div>
