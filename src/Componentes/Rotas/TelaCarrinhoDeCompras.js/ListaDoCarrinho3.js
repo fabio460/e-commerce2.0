@@ -259,7 +259,7 @@ export default function ListaDoCarrinho3() {
             variant="subtitle1"
             component="div"
           >
-            {numSelected} selected
+            {numSelected} selecionado(s)
           </Typography>
         ) : (
           <Typography

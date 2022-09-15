@@ -259,7 +259,8 @@ const loginGoogle = ()=>{
               aria-label="show 17 new notifications"
               color="default"
             >
-              <Badge badgeContent={parseInt(tamanhoDoCarrinho)} color="error" onClick={()=>navigate('/carrinhoCompras')}>
+              <Badge badgeContent={parseInt(tamanhoDoCarrinho)} color="error" 
+                 onClick={()=>navigate('/carrinhoCompras')}>
                 <ShoppingCart />
               </Badge>
             </IconButton>
