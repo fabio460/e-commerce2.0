@@ -1,6 +1,6 @@
 
 import { Button } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AppBarBootstrap from '../../AppBar/AppBarBootstrap'
 import BtnFlutuante from '../../Home/btnFlutuante'
@@ -10,6 +10,7 @@ import './telaDeCompras.css'
 export default function TelaDeCompra() {
   const produto = JSON.parse(localStorage.getItem('produto'))
   const navigate = useNavigate()
+
   const [tamanho,setTamanho]=React.useState(38)
   const [quantidade]=React.useState(1)
   const acionarCarrinho = async()=>{
@@ -68,30 +69,36 @@ export default function TelaDeCompra() {
   }
   
   return (
-    <div>
-        <AppBarBootstrap/>
-        <div className='container telaDeCompras'>
-          <div className='telaDeComprasLeft'>
-              <img src={produto.imagem1}/>
-          </div>
-          <div className='telaDeComprasRight'>
-              <div className='telaDeComprasRightTop'>
-                <h4>{produto.nome}</h4>
-                <EstrelinhasFeedback/>
-                <div >R$ {produto.valor}</div>
-                <div className='telaDeComprasRightBottomItens'>ou 6x de 
-                  <strong> R$ {(parseFloat(produto.valor)/6).toFixed(2).toString().replace('.',',')}</strong>
-                </div>
-                <div>Tamanho</div>
-                <BtnNavegacaoTamanho setTamanho={setTamanho}/>
+      <div>
+          <AppBarBootstrap/>
+          {produto ? <div className='container telaDeCompras'>
+                    <div className='telaDeComprasLeft'>
+                        <img src={produto.imagem1}/>
+                    </div>
+                    <div className='telaDeComprasRight'>
+                        <div className='telaDeComprasRightTop'>
+                          <h4>{produto.nome}</h4>
+                          <EstrelinhasFeedback/>
+                          <div >R$ {produto.valor}</div>
+                          <div className='telaDeComprasRightBottomItens'>ou 6x de 
+                            <strong> R$ {(parseFloat(produto.valor)/6).toFixed(2).toString().replace('.',',')}</strong>
+                          </div>
+                          <div>Tamanho</div>
+                          <BtnNavegacaoTamanho setTamanho={setTamanho}/>
+                        </div>
+                        <div className='telaDeComprasRightBottom'>
+                          <Button variant="contained" sx={{margin:' 15px 0px'}}>Comprar </Button>
+                          <Button variant="outlined" onClick={acionarCarrinho}>Adicionar no carrinho </Button>
+                        </div>
+                    </div>
               </div>
-              <div className='telaDeComprasRightBottom'>
-                <Button variant="contained" sx={{margin:' 15px 0px'}}>Comprar </Button>
-                <Button variant="outlined" onClick={acionarCarrinho}>Adicionar no carrinho </Button>
+              :
+              <div>
+                <h1>Não ha produto(s) selecionado(s)</h1>
+                <Button variant='outlined' onClick={()=> navigate('/')}>retornar a tela principal</Button>
               </div>
-          </div>
+          }
+        <BtnFlutuante/>
       </div>
-      <BtnFlutuante/>
-    </div>
   )
 }

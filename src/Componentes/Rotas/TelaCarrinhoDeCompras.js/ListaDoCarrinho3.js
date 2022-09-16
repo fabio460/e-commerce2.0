@@ -29,6 +29,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useNavigate } from 'react-router-dom';
 import { ArrowBackIosNew, Home } from '@mui/icons-material';
 
+const produto = JSON.parse(localStorage.getItem('produto'))
 function createData(name, calories, fat, carbs, protein) {
   return {
     name,
@@ -283,6 +284,16 @@ export default function ListaDoCarrinho3() {
               <ToggleButton onClick={()=>navigate('/telaDeCompras')}>
                 <ArrowBackIosNew color='primary'/>
               </ToggleButton>
+              {/* {
+                produto 
+                  ?  <ToggleButton onClick={()=>navigate('/telaDeCompras')}>
+                        <ArrowBackIosNew color='primary'/>
+                     </ToggleButton>
+                  :
+                     <ToggleButton onClick={()=>navigate('/')}>
+                        <ArrowBackIosNew color='primary'/>
+                     </ToggleButton>
+              } */}
             </ToggleButtonGroup>
             {/* <div onClick={()=>navigate('/telaDeCompras')}>Voltar</div> */}
           </Typography>
