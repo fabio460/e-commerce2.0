@@ -67,7 +67,7 @@ export default function TelaCarrinhoDeCompras() {
             }
         })
          .catch(res=>{
-          document.querySelector('.rua').innerHTML='';
+         document.querySelector('.rua').innerHTML='';
           document.querySelector('.bairro').innerHTML='';
           document.querySelector('.complemento').innerHTML=''
           document.querySelector('.localidade').innerHTML='';

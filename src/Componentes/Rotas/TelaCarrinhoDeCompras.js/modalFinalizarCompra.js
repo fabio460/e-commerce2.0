@@ -40,9 +40,9 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
   },[total])
 
   let usuarioLogado = localStorage.getItem('usuarioLogado');
-  let usuarioLogadoObj ={}
+  let usuarioLogadoObj =null
        
-  if(usuarioLogado.userName){
+  if(usuarioLogado){
      usuarioLogadoObj = JSON.parse(usuarioLogado)
 
   }
@@ -61,7 +61,7 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
         </DialogTitle>
         <DialogContent>
            {
-            usuarioLogado 
+            usuarioLogadoObj 
               ?
               <DialogContentText id="alert-dialog-description">
                 <div> 
@@ -82,7 +82,8 @@ export default function ModalFinalizarCompra({rua,uf,cidade,complemento,total,se
         </DialogContent>
         <DialogActions>
           {
-            usuarioLogado
+              usuarioLogadoObj 
+
                ?
                <Button onClick={handleClose}>Confirmar</Button>
                :
