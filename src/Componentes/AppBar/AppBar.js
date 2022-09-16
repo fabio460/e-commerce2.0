@@ -194,7 +194,9 @@ const loginGoogle = ()=>{
           color="inherit"
         >
             <Avatar 
-                 sx={{width:'38px',height:'38px'}} src={usuario ? usuario.avatar : ""}
+                 sx={{width:'38px',height:'38px'}} src={usuario && usuario.avatar}
+                 alt={usuario && usuario.userName}
+                
               />
         </IconButton>
         <p>{usuario && usuario.userName}</p>

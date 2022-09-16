@@ -284,18 +284,7 @@ export default function ListaDoCarrinho3() {
               <ToggleButton onClick={()=>navigate('/telaDeCompras')}>
                 <ArrowBackIosNew color='primary'/>
               </ToggleButton>
-              {/* {
-                produto 
-                  ?  <ToggleButton onClick={()=>navigate('/telaDeCompras')}>
-                        <ArrowBackIosNew color='primary'/>
-                     </ToggleButton>
-                  :
-                     <ToggleButton onClick={()=>navigate('/')}>
-                        <ArrowBackIosNew color='primary'/>
-                     </ToggleButton>
-              } */}
             </ToggleButtonGroup>
-            {/* <div onClick={()=>navigate('/telaDeCompras')}>Voltar</div> */}
           </Typography>
   
         )}
