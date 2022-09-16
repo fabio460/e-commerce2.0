@@ -15,10 +15,10 @@ footer{
     .carousel-item img{
         height: 200px;
     }
-    footer{
+    /* footer{
         flex-direction: column;
         justify-content: center;
         font-size: 8px;
         display: none;
-    }
+    } */
 }

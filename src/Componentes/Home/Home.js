@@ -17,7 +17,8 @@ import Caroulsel from './Caroulsel';
 import AppBarBootstrap from '../AppBar/AppBarBootstrap';
 import BtnFlutuante from './btnFlutuante';
 import { useDispatch } from 'react-redux';
-import { Link, Typography } from '@mui/material';
+import { Avatar, Link, Typography } from '@mui/material';
+import { GitHub, LinkedIn } from '@mui/icons-material';
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -88,13 +89,22 @@ export default function Home(props) {
         </div>
         <footer>
            <Typography>
-              <Link href='https://github.com/fabio460' sx={{cursor:'pointer'}}>Github</Link>
+              <Link href='https://github.com/fabio460' sx={{cursor:'pointer',display:'flex',justifyContent:'center'}}>
+                <GitHub sx={{width:'20%',height:'20%',color:'black'}} />
+              </Link>
            </Typography>
            <Typography>
-              <Link href='https://fabio460.github.io/Portifolio/' sx={{cursor:'pointer'}}>Portifolio</Link>
+              <Link href='https://fabio460.github.io/Portifolio/' sx={{cursor:'pointer',display:'flex',justifyContent:'center'}}>
+                <Avatar 
+                 sx={{width:'20%',height:'20%',color:'black'}}
+                 src='https://fabio460.github.io/Portifolio/assets/imagens/logo-removebg-preview.png'
+                />
+              </Link>
            </Typography>
            <Typography>
-              <Link href='https://www.linkedin.com/in/fabio-oliveira-b2589163/' sx={{cursor:'pointer'}}>Linkedin</Link>
+              <Link href='https://www.linkedin.com/in/fabio-oliveira-b2589163/' sx={{cursor:'pointer',display:'flex',justifyContent:'center'}}>
+                <LinkedIn sx={{width:'20%',height:'20%',color:'black'}}/>
+              </Link>
            </Typography>
         </footer>
       </div>
