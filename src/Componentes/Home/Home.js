@@ -91,6 +91,7 @@ export default function Home(props) {
            <Typography>
               <Link href='https://github.com/fabio460' sx={{cursor:'pointer',display:'flex',justifyContent:'center'}}>
                 <GitHub sx={{width:'20%',height:'20%',color:'black'}} />
+                <div>github</div>
               </Link>
            </Typography>
            <Typography>
@@ -99,12 +100,15 @@ export default function Home(props) {
                  sx={{width:'20%',height:'20%',color:'black'}}
                  src='https://fabio460.github.io/Portifolio/assets/imagens/logo-removebg-preview.png'
                 />
+                 <div>portifólio</div>
               </Link>
            </Typography>
            <Typography>
               <Link href='https://www.linkedin.com/in/fabio-oliveira-b2589163/' sx={{cursor:'pointer',display:'flex',justifyContent:'center'}}>
                 <LinkedIn sx={{width:'20%',height:'20%',color:'black'}}/>
+                <div>linkedin</div>
               </Link>
+              
            </Typography>
         </footer>
       </div>
